@@ -6,7 +6,7 @@
     "node": ">=20.9.0"
   },
   "scripts": {
-    "migrate:tsx": "node scripts/convert-html-to-tsx.mjs",
+    "migrate:tsx": "node scripts/convert-html-to-tsx.mjs && node scripts/apply-case-studies-brief.mjs",
     "postinstall": "npm run migrate:tsx",
     "predev": "node scripts/sync-static-assets.mjs && npm run migrate:tsx",
     "dev": "next dev",
