@@ -437,7 +437,7 @@ export default function Page() {
         <div className="service-tagline">Everything starts here.</div>
         <a className="service-cta" href="https://calendly.com/addyawan57/15min" target="_blank">
           Get started
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
       </div>
       <div className="service-right">
@@ -466,7 +466,7 @@ export default function Page() {
         <div className="service-tagline">Your highest ROI channel, built to run 24/7.</div>
         <a className="service-cta" href="https://calendly.com/addyawan57/15min" target="_blank">
           Get started
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
       </div>
       <div className="service-right">
@@ -540,7 +540,7 @@ export default function Page() {
         <div className="service-tagline">This is where we drive immediate revenue.</div>
         <a className="service-cta" href="https://calendly.com/addyawan57/15min" target="_blank">
           Get started
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
       </div>
       <div className="service-right">
@@ -593,7 +593,7 @@ export default function Page() {
         <div className="service-tagline">If your emails don't land, nothing else matters.</div>
         <a className="service-cta" href="https://calendly.com/addyawan57/15min" target="_blank">
           Get started
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
       </div>
       <div className="service-right">
@@ -625,7 +625,7 @@ export default function Page() {
         <div className="service-tagline">No list = no revenue.</div>
         <a className="service-cta" href="https://calendly.com/addyawan57/15min" target="_blank">
           Get started
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
       </div>
       <div className="service-right">
@@ -656,7 +656,7 @@ export default function Page() {
         <div className="service-tagline">Your store and your email need to work together.</div>
         <a className="service-cta" href="https://calendly.com/addyawan57/15min" target="_blank">
           Get started
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
       </div>
       <div className="service-right">
@@ -687,7 +687,7 @@ export default function Page() {
         <div className="service-tagline">We handle your entire email platform so nothing breaks and everything performs.</div>
         <a className="service-cta" href="https://calendly.com/addyawan57/15min" target="_blank">
           Get started
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
       </div>
       <div className="service-right">
