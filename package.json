@@ -6,9 +6,11 @@
     "node": ">=20.9.0"
   },
   "scripts": {
-    "predev": "node scripts/sync-static-assets.mjs",
+    "migrate:tsx": "node scripts/convert-html-to-tsx.mjs",
+    "postinstall": "npm run migrate:tsx",
+    "predev": "node scripts/sync-static-assets.mjs && npm run migrate:tsx",
     "dev": "next dev",
-    "prebuild": "node scripts/sync-static-assets.mjs",
+    "prebuild": "node scripts/sync-static-assets.mjs && npm run migrate:tsx",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
