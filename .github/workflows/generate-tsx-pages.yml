@@ -1,55 +1,34 @@
-name: Generate TSX pages
+name: Verify Next.js build
 
 on:
   push:
     branches:
       - main
-      - tsx-page-migration
-      - case-studies-brief
-    paths:
-      - "*.html"
-      - "scripts/convert-html-to-tsx.mjs"
-      - "scripts/apply-case-studies-brief.mjs"
-      - "scripts/case-studies-overrides.mjs"
-      - ".github/workflows/generate-tsx-pages.yml"
-      - "package.json"
+  pull_request:
+    branches:
+      - main
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  generate:
+  verify:
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out the current branch
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.ref_name }}
 
       - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      - name: Install dependencies without lifecycle scripts
-        run: npm install --ignore-scripts
+      - name: Install dependencies
+        run: npm install
 
-      - name: Generate real TSX routes
-        run: npm run migrate:tsx
+      - name: Lint the project
+        run: npm run lint
 
-      - name: Verify the generated Next.js build
+      - name: Build the project
         run: npm run build
-
-      - name: Commit generated TSX files
-        run: |
-          if git diff --quiet; then
-            echo "No generated changes to commit."
-            exit 0
-          fi
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A app components lib
-          git commit -m "feat: generate TSX routes from legacy HTML"
-          git push origin HEAD:${{ github.ref_name }}
