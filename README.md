@@ -1,6 +1,6 @@
 # Digital Supremacy
 
-The existing Digital Supremacy website is now runnable as a **Next.js + Tailwind CSS npm project** without redesigning the UI.
+Digital Supremacy is a **Next.js + Tailwind CSS** npm project. Its legacy static pages are converted into real, editable TSX routes while retaining the existing UI.
 
 ## Run locally
 
@@ -20,30 +20,42 @@ npm run start
 
 ## What changed
 
-- Added Next.js App Router and TypeScript.
-- Added Tailwind CSS v4 with the official PostCSS plugin.
-- Preserved the existing HTML markup and CSS so the design remains unchanged.
-- Preserved the smooth-scroll audit buttons, Calendly button behavior, and review carousel.
-- Added a compatibility route for existing first-level HTML pages. For example:
-  - `services.html` is available at `/services`
-  - `case-studies.html` is available at `/case-studies`
-  - `why-us.html` is available at `/why-us`
-- Added a pre-dev and pre-build asset sync that copies existing `image/`, `images/`, `assets/`, and `fonts/` folders into `public/` when those folders exist.
+- Added Next.js App Router, TypeScript, Tailwind CSS v4, PostCSS, and ESLint.
+- Converted the top-level static HTML pages into direct App Router TSX routes:
+  - `index.html` → `app/page.tsx`
+  - `services.html` → `app/services/page.tsx`
+  - `case-studies.html` → `app/case-studies/page.tsx`
+  - `why-us.html` → `app/why-us/page.tsx`
+  - `privacy-policy.html` → `app/privacy-policy/page.tsx`
+  - `terms-of-service.html` → `app/terms-of-service/page.tsx`
+- Preserved the original DOM structure, class names, page CSS, image paths, spacing, and animations so the UI stays unchanged.
+- Replaced inline browser scripts with `components/site-interactions.tsx`, which preserves smooth scrolling, Calendly opens, and the review slider.
+- Removed the HTML injection compatibility renderer from the generated project output.
+- Preserved the original `.html` files as source and rollback references.
+- Added a GitHub Actions workflow that regenerates TSX files and verifies the Next.js build on the migration branch.
 
-## Migration structure
+## Regenerating pages after editing legacy HTML
+
+```bash
+npm run migrate:tsx
+```
+
+`npm install`, `npm run dev`, and `npm run build` already run this conversion automatically. The generated TSX files are deliberately committed so they remain editable and reviewable in Git.
+
+## Project structure
 
 ```text
 app/
-  [slug]/page.tsx        # Existing first-level .html pages
-  globals.css            # Tailwind entry point
-  layout.tsx             # Root HTML and document metadata
-  page.tsx               # Existing index.html rendered through Next.js
+  page.tsx                         # Converted homepage
+  services/page.tsx                # Converted services page
+  case-studies/page.tsx            # Converted case studies page
+  why-us/page.tsx                  # Converted why-us page
+  privacy-policy/page.tsx          # Converted privacy page
+  terms-of-service/page.tsx        # Converted terms page
+  globals.css                      # Tailwind entry point
 components/
-  legacy-page-client.tsx # Browser interactions preserved in React
-lib/
-  legacy-page.ts         # Reads and normalizes legacy HTML files
+  site-interactions.tsx            # React client behavior for the original UI
 scripts/
-  sync-static-assets.mjs # Copies legacy public assets before dev/build
+  convert-html-to-tsx.mjs          # HTML to TSX converter
+  sync-static-assets.mjs           # Copies legacy assets into public/ before dev/build
 ```
-
-`index.html` remains the visual source of truth during this migration. The Next.js renderer reads its existing markup and styles so the UI stays identical while the project becomes npm, Next.js, and Tailwind ready.
