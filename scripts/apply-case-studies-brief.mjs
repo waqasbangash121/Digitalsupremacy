@@ -24,12 +24,10 @@ if (!source.includes(importStatement) || !source.includes(componentStart) || !so
 }
 
 const overrideDeclaration = `\nconst caseStudiesOverrides = String.raw\`${toSafeTemplateLiteral(caseStudiesOverrides)}\`;\n`;
+const patchedComponentStart = `      <style>{pageStyles}</style>\n      <style>{caseStudiesOverrides}</style>\n      <SiteInteractions />\n      <div className="case-studies-page">\n`;
 
 source = source.replace(importStatement, `${importStatement}${overrideDeclaration}`);
-source = source.replace(
-  componentStart,
-  `${componentStart.replace("      <style>{pageStyles}</style>\n", "      <style>{pageStyles}</style>\n      <style>{caseStudiesOverrides}</style>\n")}      <div className="case-studies-page">\n      <SiteInteractions />\n`,
-);
+source = source.replace(componentStart, patchedComponentStart);
 source = `${source.slice(0, -componentEnd.length)}      </div>${componentEnd}`;
 
 await writeFile(pagePath, source);
