@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — Digital Supremacy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --red: #C1121F;
+  --bg: #0F0F10;
+  --bg-card: #1A1A1C;
+  --border: #2A2A2E;
+  --text: #F0F0F0;
+  --text-muted: #A1A1A6;
+  --text-dim: #6B6B70;
+  --font: 'Inter', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.nav-wrap {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(15,15,16,0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.nav {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 24px; height: 64px;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 24px;
+}
+.logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.logo-img {
+  height: 50px;
+  width: auto;
+  display: block;
+}
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { font-size: 13px; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  background: var(--red); color: #fff;
+  font-family: var(--font); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.5px; border: none; border-radius: 7px;
+  padding: 9px 18px; cursor: pointer; transition: background 0.2s;
+  text-decoration: none; white-space: nowrap;
+}
+.nav-cta:hover { background: #A00E19; }
+
+.container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 24px; }
+
+.page-wrap { display: grid; grid-template-columns: 220px 1fr; gap: 64px; padding: 64px 0 100px; }
+
+.sidebar { position: sticky; top: 88px; height: fit-content; }
+.sidebar-label {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--text-dim); margin-bottom: 16px;
+}
+.sidebar-links { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.sidebar-links a {
+  display: block; font-size: 13px; font-weight: 400;
+  color: var(--text-muted); text-decoration: none;
+  padding: 6px 12px; border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+  border-left: 2px solid transparent;
+}
+.sidebar-links a:hover { color: var(--text); background: var(--bg-card); }
+.sidebar-links a.active { color: var(--text); border-left-color: var(--red); background: var(--bg-card); }
+
+.policy-content {}
+
+.policy-header { margin-bottom: 56px; }
+.policy-label {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--red); margin-bottom: 16px;
+}
+.policy-header h1 {
+  font-size: 40px; font-weight: 800;
+  letter-spacing: -0.5px; line-height: 1.1;
+  color: var(--text); margin-bottom: 12px;
+}
+.policy-meta { font-size: 13px; color: var(--text-dim); }
+
+.policy-section { margin-bottom: 44px; scroll-margin-top: 100px; }
+.policy-section:last-child { margin-bottom: 0; }
+
+.section-num {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--red); margin-bottom: 8px;
+}
+.policy-section h2 {
+  font-size: 20px; font-weight: 700;
+  color: var(--text); margin-bottom: 14px;
+  letter-spacing: -0.2px; line-height: 1.3;
+}
+.policy-section p {
+  font-size: 15px; color: var(--text-muted);
+  line-height: 1.75; margin-bottom: 12px;
+}
+.policy-section p:last-child { margin-bottom: 0; }
+
+.policy-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 10px 0; }
+.policy-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 15px; color: var(--text-muted); line-height: 1.6;
+}
+.policy-list li::before {
+  content: ''; width: 5px; height: 5px;
+  background: var(--red); border-radius: 50%;
+  flex-shrink: 0; margin-top: 8px;
+}
+
+.callout {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--red);
+  border-radius: 0 10px 10px 0;
+  padding: 20px 24px; margin: 16px 0;
+}
+.callout p { font-size: 14px; color: var(--text-muted); margin-bottom: 0; line-height: 1.65; }
+.callout p strong { color: var(--text); }
+
+.contact-block {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 28px 32px; margin-top: 16px;
+}
+.contact-block p { font-size: 15px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.6; }
+.contact-block p:last-child { margin-bottom: 0; }
+.contact-block a { color: var(--red); text-decoration: none; }
+.contact-block a:hover { text-decoration: underline; }
+.contact-block strong { color: var(--text); font-weight: 600; }
+
+.footer { padding: 40px 0 28px; border-top: 1px solid var(--border); }
+.footer-bottom {
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 12px;
+}
+.footer-logo-text { font-weight: 700; font-size: 14px; color: var(--text); }
+.footer-copy { font-size: 13px; color: var(--text-dim); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 13px; color: var(--text-dim); text-decoration: none; }
+.footer-links a:hover { color: var(--text-muted); }
+
+@media (max-width: 900px) {
+  .page-wrap { grid-template-columns: 1fr; gap: 0; padding: 48px 0 80px; }
+  .sidebar { display: none; }
+}
+@media (max-width: 640px) {
+  .container { padding: 0 16px; }
+  .policy-header h1 { font-size: 28px; }
+  .nav-links { display: none; }
+}
+
+@media (max-width: 640px) {
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .footer-copy { text-align: left; }
+}
+
+/* FOOTER */
+.footer-wrap { border-top: 1px solid var(--border); }
+
+/* CTA BAND */
+.footer-cta {
+  padding: 72px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.footer-cta-left { max-width: 520px; }
+.footer-cta-left h2 {
+  font-size: clamp(22px, 3.5vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.footer-cta-left p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.footer-cta-btn {
+  background: var(--red);
+  color: #fff;
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  white-space: nowrap;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.footer-cta-btn:hover { background: var(--red-dark, #A00E19); }
+
+/* FOOTER COLUMNS */
+.footer-cols {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding: 56px 0;
+  border-bottom: 1px solid var(--border);
+}
+.footer-col-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+.footer-brand-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.2px;
+  margin-bottom: 12px;
+}
+.footer-brand-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.footer-brand-email a {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-brand-email a:hover { color: var(--text); }
+.footer-col-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col-links a {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-col-links a:hover { color: var(--text); }
+
+/* BOTTOM BAR */
+.footer-bottom-bar {
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer-bottom-bar p { font-size: 12px; color: var(--text-dim); }
+
+@media (max-width: 900px) {
+  .footer-cols { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .footer-cta { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 560px) {
+  .footer-cols { grid-template-columns: 1fr; gap: 32px; }
+  .footer-cta { padding: 48px 0; }
+  .footer-bottom-bar { flex-direction: column; align-items: flex-start; gap: 4px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav class="nav">
+<a href="index.html" class="logo">
+    <img src="image/logo.png" alt="Digital Supremacy Logo" class="logo-img">
+</a>
+            <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="why-us.html">Why Us</a></li>
+      <li><a href="team.html">Our Team</a></li>
+    </ul>
+    <a class="nav-cta" href="https://calendly.com/addyawan57/15min" target="_blank">Book a Call</a>
+  </nav>
+</div>
+
+<div class="container">
+  <div class="page-wrap">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-label">On this page</div>
+      <ul class="sidebar-links" id="sidebarLinks">
+        <li><a href="#introduction" class="active">1. Introduction</a></li>
+        <li><a href="#services">2. Services</a></li>
+        <li><a href="#responsibilities">3. Client Responsibilities</a></li>
+        <li><a href="#payments">4. Payments</a></li>
+        <li><a href="#disclaimer">5. Results Disclaimer</a></li>
+        <li><a href="#ip">6. Intellectual Property</a></li>
+        <li><a href="#confidentiality">7. Confidentiality</a></li>
+        <li><a href="#liability">8. Limitation of Liability</a></li>
+        <li><a href="#termination">9. Termination</a></li>
+        <li><a href="#changes">10. Changes to Services</a></li>
+        <li><a href="#law">11. Governing Law</a></li>
+        <li><a href="#contact">12. Contact Details</a></li>
+      </ul>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="policy-content">
+
+      <div class="policy-header">
+        <p class="policy-label">Legal</p>
+        <h1>Terms of Service</h1>
+        <p class="policy-meta">Last updated: 15 May 2026</p>
+      </div>
+
+      <div class="policy-section" id="introduction">
+        <div class="section-num">01</div>
+        <h2>Introduction</h2>
+        <p>These Terms of Service ("Terms") govern your use of the website and services provided by <strong style="color:var(--text)">Digital Supremacy LTD</strong> ("we", "us", or "our").</p>
+        <p>By using our website or engaging our services, you agree to these Terms.</p>
+      </div>
+
+      <div class="policy-section" id="services">
+        <div class="section-num">02</div>
+        <h2>Services</h2>
+        <p>We provide email marketing, retention strategy, and related digital marketing services for eCommerce brands.</p>
+        <p>All services are agreed upon in advance and may vary depending on the scope of work.</p>
+      </div>
+
+      <div class="policy-section" id="responsibilities">
+        <div class="section-num">03</div>
+        <h2>Client Responsibilities</h2>
+        <p>You agree to:</p>
+        <ul class="policy-list">
+          <li>Provide accurate and complete information</li>
+          <li>Give timely access to required platforms (e.g. Shopify, email platforms)</li>
+          <li>Respond to requests and approvals in a reasonable timeframe</li>
+        </ul>
+        <p>Delays in communication or access may affect delivery timelines.</p>
+      </div>
+
+      <div class="policy-section" id="payments">
+        <div class="section-num">04</div>
+        <h2>Payments</h2>
+        <ul class="policy-list">
+          <li>Payment terms are agreed in advance</li>
+          <li>Invoices must be paid by the stated due date</li>
+          <li>Late payments may result in paused work or delayed delivery</li>
+        </ul>
+        <div class="callout">
+          <p><strong>All fees are non-refundable</strong> unless otherwise agreed in writing.</p>
+        </div>
+      </div>
+
+      <div class="policy-section" id="disclaimer">
+        <div class="section-num">05</div>
+        <h2>Results Disclaimer</h2>
+        <p>We do not guarantee specific results, revenue, or performance outcomes.</p>
+        <p>Results depend on multiple factors including your product, audience, market conditions, and implementation.</p>
+        <p>We provide strategy and execution based on best practices and experience.</p>
+      </div>
+
+      <div class="policy-section" id="ip">
+        <div class="section-num">06</div>
+        <h2>Intellectual Property</h2>
+        <p>Unless agreed otherwise:</p>
+        <ul class="policy-list">
+          <li>You retain ownership of your brand and assets</li>
+          <li>We retain rights to any frameworks, systems, or methodologies used</li>
+        </ul>
+        <p>We may showcase non-confidential work in our portfolio unless requested otherwise.</p>
+      </div>
+
+      <div class="policy-section" id="confidentiality">
+        <div class="section-num">07</div>
+        <h2>Confidentiality</h2>
+        <p>We respect your business information and will not share confidential data without your consent.</p>
+      </div>
+
+      <div class="policy-section" id="liability">
+        <div class="section-num">08</div>
+        <h2>Limitation of Liability</h2>
+        <p>We are not liable for:</p>
+        <ul class="policy-list">
+          <li>Indirect or consequential losses</li>
+          <li>Loss of revenue or business opportunities</li>
+          <li>Issues caused by third-party platforms (e.g. Shopify, Klaviyo)</li>
+        </ul>
+        <div class="callout">
+          <p>Our liability is limited to the amount paid for the services provided.</p>
+        </div>
+      </div>
+
+      <div class="policy-section" id="termination">
+        <div class="section-num">09</div>
+        <h2>Termination</h2>
+        <p>Either party may terminate the agreement with reasonable notice.</p>
+        <p>Any work completed up to the termination date must be paid for.</p>
+      </div>
+
+      <div class="policy-section" id="changes">
+        <div class="section-num">10</div>
+        <h2>Changes to Services</h2>
+        <p>We reserve the right to modify or update our services at any time.</p>
+        <p>Any significant changes will be communicated in advance.</p>
+      </div>
+
+      <div class="policy-section" id="law">
+        <div class="section-num">11</div>
+        <h2>Governing Law</h2>
+        <p>These Terms are governed by the laws of the United Kingdom.</p>
+      </div>
+
+      <div class="policy-section" id="contact">
+        <div class="section-num">12</div>
+        <h2>Contact Details</h2>
+        <p>For any questions regarding these Terms, contact:</p>
+        <div class="contact-block">
+          <p><strong>Digital Supremacy LTD</strong></p>
+          <p>Email: <a href="mailto:addy@yourdigitalsupremacy.com">addy@yourdigitalsupremacy.com</a></p>
+          <p>Registered Address: 2 Discovery Tower, London, United Kingdom</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-wrap">
+  <div class="container">
+
+    <!-- CTA BAND -->
+    <div class="footer-cta">
+      <div class="footer-cta-left">
+        <h2>Ready to turn email into a revenue channel?</h2>
+        <p>Book a call and we'll show you where your retention system can work harder.</p>
+      </div>
+      <a class="footer-cta-btn" href="https://calendly.com/addyawan57/15min" target="_blank">Schedule a Meeting</a>
+    </div>
+
+    <!-- COLUMNS -->
+    <div class="footer-cols">
+
+      <!-- Brand -->
+      <div>
+        <div class="footer-brand-name">Digital Supremacy</div>
+        <p class="footer-brand-desc">Retention marketing for DTC ecommerce brands. We build email systems that turn traffic, subscribers, and customers into consistent revenue.</p>
+        <div class="footer-brand-email"><a href="mailto:addy@yourdigitalsupremacy.com">addy@yourdigitalsupremacy.com</a></div>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-col-links">
+          <li><a href="services.html#strategy">Email Strategy</a></li>
+          <li><a href="services.html#flows">Flows</a></li>
+          <li><a href="services.html#campaigns">Campaigns</a></li>
+          <li><a href="services.html#deliverability">Deliverability</a></li>
+          <li><a href="services.html#leadgen">Lead Generation</a></li>
+          <li><a href="services.html#shopify">Shopify Management</a></li>
+          <li><a href="services.html#platform">Platform Management</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-col-links">
+          <li><a href="why-us.html">Why Us</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="https://calendly.com/addyawan57/15min" target="_blank">Book a Call</a></li>
+          <li><a href="mailto:addy@yourdigitalsupremacy.com">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <ul class="footer-col-links">
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-of-service.html">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <!-- Social -->
+      <div>
+        <div class="footer-col-title">Social</div>
+        <ul class="footer-col-links">
+          <li><a href="#" target="_blank">LinkedIn</a></li>
+          <li><a href="#" target="_blank">Instagram</a></li>
+          <li><a href="#" target="_blank">YouTube</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM BAR -->
+    <div class="footer-bottom-bar">
+      <p>© 2026 Digital Supremacy LTD. All rights reserved.</p>
+      <p>Company number: 17183960</p>
+    </div>
+
+  </div>
+</div>
+<script>
+const sections = document.querySelectorAll('.policy-section');
+const links = document.querySelectorAll('.sidebar-links a');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.sidebar-links a[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
