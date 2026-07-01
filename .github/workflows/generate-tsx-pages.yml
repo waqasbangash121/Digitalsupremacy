@@ -8,6 +8,7 @@ on:
       - "*.html"
       - "scripts/convert-html-to-tsx.mjs"
       - ".github/workflows/generate-tsx-pages.yml"
+      - "package.json"
 
 permissions:
   contents: write
@@ -27,8 +28,14 @@ jobs:
         with:
           node-version: 22
 
+      - name: Install dependencies without lifecycle scripts
+        run: npm install --ignore-scripts
+
       - name: Convert legacy HTML files to TSX routes
         run: node scripts/convert-html-to-tsx.mjs
+
+      - name: Verify the generated Next.js build
+        run: npm run build
 
       - name: Commit generated TSX files
         run: |
