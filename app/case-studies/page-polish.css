@@ -44,7 +44,6 @@
   padding: clamp(28px, 6vw, 72px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 22px;
-  background: linear-gradient(145deg, rgba(34, 34, 37, 0.98), rgba(15, 15, 16, 0.98));
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.26);
 }
 
