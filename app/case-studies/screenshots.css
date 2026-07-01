@@ -1,30 +1,44 @@
-/* Case studies screenshot gallery — intentionally scoped to this route only. */
-.page--case-studies .screenshots-group {
+/* Evidence gallery for the case studies route. */
+.page--case-studies.page--case-studies .screenshots-group {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 18px;
   width: min(1120px, 100%);
-  margin: 32px auto 48px;
-  padding: 18px;
+  margin: 34px auto 52px;
+  padding: clamp(12px, 2vw, 20px);
   overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  background: var(--bg-raised);
-  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.24);
+  isolation: isolate;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(34, 34, 37, 0.94), rgba(15, 15, 16, 0.96));
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.26);
 }
 
-.page--case-studies .screenshots-group > .screenshot-label {
+.page--case-studies.page--case-studies .screenshots-group > .screenshot-label {
+  display: flex;
   grid-column: 1 / -1;
+  align-items: center;
+  gap: 9px;
   margin: 0;
   color: var(--text-muted);
-  font-size: 11px;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   line-height: 1.45;
   text-transform: uppercase;
 }
 
-.page--case-studies .screenshots-group > .screenshot-img {
+.page--case-studies.page--case-studies .screenshots-group > .screenshot-label::before {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  content: "";
+  background: var(--red);
+  box-shadow: 0 0 0 4px rgba(193, 18, 31, 0.13);
+}
+
+.page--case-studies.page--case-studies .screenshots-group > .screenshot-img {
   display: block;
   grid-column: 1 / -1;
   width: 100% !important;
@@ -32,36 +46,47 @@
   height: auto !important;
   margin: 0 !important;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  border-radius: 12px;
   background: #0a0a0b;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
   object-fit: contain;
+  transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
 }
 
-/* Paired metric screenshots sit side-by-side when the source marks them as a pair. */
-.page--case-studies .screenshots-group.two-screenshots > .screenshot-img,
-.page--case-studies .screenshots-group > .screenshot-img.half {
+.page--case-studies.page--case-studies .screenshots-group > .screenshot-img:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Paired metric images get equal visual weight without any cropping. */
+.page--case-studies.page--case-studies .screenshots-group.two-screenshots > .screenshot-img,
+.page--case-studies.page--case-studies .screenshots-group > .screenshot-img.half {
   grid-column: span 6;
 }
 
-/* Avoid an unnecessarily narrow single screenshot on compact desktop widths. */
-.page--case-studies .screenshots-group > .screenshot-img.half:only-of-type {
+/* A single item marked half should still use the full gallery width. */
+.page--case-studies.page--case-studies .screenshots-group > .screenshot-img.half:only-of-type {
   grid-column: 1 / -1;
 }
 
 @media (max-width: 760px) {
-  .page--case-studies .screenshots-group {
+  .page--case-studies.page--case-studies .screenshots-group {
     grid-template-columns: 1fr;
     gap: 14px;
-    margin: 28px auto 40px;
+    margin: 28px auto 42px;
     padding: 12px;
     border-radius: 14px;
   }
 
-  .page--case-studies .screenshots-group > .screenshot-img,
-  .page--case-studies .screenshots-group.two-screenshots > .screenshot-img,
-  .page--case-studies .screenshots-group > .screenshot-img.half {
+  .page--case-studies.page--case-studies .screenshots-group > .screenshot-img,
+  .page--case-studies.page--case-studies .screenshots-group.two-screenshots > .screenshot-img,
+  .page--case-studies.page--case-studies .screenshots-group > .screenshot-img.half {
     grid-column: 1;
-    border-radius: 8px;
+    border-radius: 9px;
+  }
+
+  .page--case-studies.page--case-studies .screenshots-group > .screenshot-img:hover {
+    transform: none;
   }
 }
