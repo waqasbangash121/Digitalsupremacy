@@ -1,0 +1,566 @@
+import type { Metadata } from "next";
+
+import SiteInteractions from "@/components/site-interactions";
+
+export const metadata: Metadata = {
+  title: "Why Us — Digital Supremacy",
+  description: "Digital Supremacy",
+};
+
+const pageStyles = String.raw`
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --red: #C1121F;
+  --red-dark: #A00E19;
+  --bg: #0F0F10;
+  --bg-card: #1A1A1C;
+  --bg-raised: #222225;
+  --border: #2A2A2E;
+  --text: #F0F0F0;
+  --text-muted: #A1A1A6;
+  --text-dim: #6B6B70;
+  --font: 'Inter', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* NAV */
+.nav-wrap {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(15,15,16,0.97);
+  backdrop-filter: blur(8px);
+  
+}
+.nav {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 24px; height: 64px;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 24px;
+}
+.logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.logo-img {
+  height: 50px;
+  width: auto;
+  display: block;
+}
+
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { font-size: 13px; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+.nav-cta {
+  background: var(--red); color: #fff;
+  font-family: var(--font); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.5px; border: none; border-radius: 7px;
+  padding: 9px 18px; cursor: pointer; transition: background 0.2s; white-space: nowrap;
+}
+.nav-cta:hover { background: var(--red-dark); }
+
+/* CONTAINER */
+.container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 24px; }
+
+/* ===================== */
+/* HERO SECTION */
+/* ===================== */
+.hero {
+  padding: 100px 0 80px;
+  text-align: center;
+  
+}
+.hero-label {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--red); margin-bottom: 28px;
+}
+.hero h1 {
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 800; line-height: 1.05;
+  letter-spacing: -1px; color: var(--text);
+  max-width: 900px; margin: 0 auto 24px;
+}
+.hero h1 .dim { color: var(--text-muted); }
+.hero-sub {
+  font-size: 18px; color: var(--text-muted);
+  line-height: 1.65; max-width: 520px;
+  margin: 0 auto 56px;
+}
+
+/* ===================== */
+/* VIDEO EMBED */
+/* ===================== */
+.video-section { padding: 80px 0;  }
+.video-wrap {
+  max-width: 860px; margin: 0 auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  display: flex; align-items: center; justify-content: center;
+}
+.video-placeholder {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 16px; width: 100%; height: 100%;
+  padding: 40px;
+}
+.video-play-btn {
+  width: 72px; height: 72px;
+  background: var(--red); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: transform 0.2s, opacity 0.2s;
+  flex-shrink: 0;
+}
+.video-play-btn:hover { transform: scale(1.08); opacity: 0.9; }
+.video-play-btn svg { width: 28px; height: 28px; fill: #fff; margin-left: 4px; }
+.video-label {
+  font-size: 14px; font-weight: 500;
+  color: var(--text-muted); text-align: center;
+  max-width: 320px; line-height: 1.5;
+}
+/* When you have a real video URL, replace the placeholder with an iframe or video tag:
+   <iframe src="YOUR_VIDEO_URL" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+*/
+
+/* ===================== */
+/* MAIN COPY SECTION */
+/* ===================== */
+.copy-section { padding: 80px 0;  }
+.copy-inner {
+  max-width: 760px; margin: 0 auto; text-align: center;
+}
+.copy-inner h2 {
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 700; line-height: 1.2;
+  letter-spacing: -0.4px; color: var(--text);
+  margin-bottom: 24px;
+}
+.copy-inner p {
+  font-size: 18px; color: var(--text-muted);
+  line-height: 1.75; margin-bottom: 20px;
+}
+.copy-inner p strong { color: var(--text); font-weight: 600; }
+.copy-inner .statement {
+  font-size: 20px; font-weight: 600;
+  color: var(--text); line-height: 1.5;
+  margin-top: 32px; padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+/* ===================== */
+/* WHY BRANDS SECTION */
+/* ===================== */
+.why-section { padding: 80px 0;  }
+.why-header { text-align: center; margin-bottom: 56px; }
+.why-header h2 {
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 700; letter-spacing: -0.3px;
+  color: var(--text); margin-bottom: 12px;
+}
+.why-header p { font-size: 16px; color: var(--text-muted); }
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 900px; margin: 0 auto;
+}
+.why-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 36px 32px;
+  transition: border-color 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.why-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: var(--red);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
+}
+.why-card:hover { border-color: #444; }
+.why-card:hover::before { transform: scaleX(1); }
+.why-card-num {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--red); margin-bottom: 16px;
+}
+.why-card h3 {
+  font-size: 18px; font-weight: 600;
+  color: var(--text); margin-bottom: 10px;
+  line-height: 1.3; letter-spacing: -0.2px;
+}
+.why-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+
+/* ===================== */
+/* CTA SECTION */
+/* ===================== */
+.cta-section { padding: 100px 0; }
+.cta-inner {
+  max-width: 680px; margin: 0 auto;
+  text-align: center;
+}
+.cta-inner h2 {
+  font-size: clamp(28px, 4.5vw, 44px);
+  font-weight: 800; line-height: 1.1;
+  letter-spacing: -0.5px; color: var(--text);
+  margin-bottom: 16px;
+}
+.cta-inner h2 .accent { color: var(--red); }
+.cta-inner p {
+  font-size: 17px; color: var(--text-muted);
+  line-height: 1.6; margin-bottom: 40px;
+}
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--red); color: #fff;
+  font-family: var(--font); font-size: 16px; font-weight: 600;
+  letter-spacing: 0.5px; border: none; border-radius: 8px;
+  padding: 16px 32px; cursor: pointer;
+  text-decoration: none; display: inline-block;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--red-dark); }
+.btn-secondary {
+  background: transparent; color: var(--text);
+  font-family: var(--font); font-size: 16px; font-weight: 600;
+  border: 1px solid var(--border); border-radius: 8px;
+  padding: 16px 32px; cursor: pointer;
+  text-decoration: none; display: inline-block;
+  transition: border-color 0.2s;
+}
+.btn-secondary:hover { border-color: #666; }
+
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+  .hero { padding: 64px 0 56px; }
+  .video-section, .copy-section, .why-section { padding: 56px 0; }
+  .cta-section { padding: 72px 0; }
+  .why-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+
+@media (max-width: 640px) {
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .footer-copy { text-align: left; }
+}
+
+/* FOOTER */
+.footer-wrap { border-top: 1px solid var(--border); }
+
+/* CTA BAND */
+.footer-cta {
+  padding: 72px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.footer-cta-left { max-width: 520px; }
+.footer-cta-left h2 {
+  font-size: clamp(22px, 3.5vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.footer-cta-left p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.footer-cta-btn {
+  background: var(--red);
+  color: #fff;
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  white-space: nowrap;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.footer-cta-btn:hover { background: var(--red-dark, #A00E19); }
+
+/* FOOTER COLUMNS */
+.footer-cols {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding: 56px 0;
+  border-bottom: 1px solid var(--border);
+}
+.footer-col-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+.footer-brand-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.2px;
+  margin-bottom: 12px;
+}
+.footer-brand-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.footer-brand-email a {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-brand-email a:hover { color: var(--text); }
+.footer-col-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col-links a {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-col-links a:hover { color: var(--text); }
+
+/* BOTTOM BAR */
+.footer-bottom-bar {
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer-bottom-bar p { font-size: 12px; color: var(--text-dim); }
+
+@media (max-width: 900px) {
+  .footer-cols { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .footer-cta { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 560px) {
+  .footer-cols { grid-template-columns: 1fr; gap: 32px; }
+  .footer-cta { padding: 48px 0; }
+  .footer-bottom-bar { flex-direction: column; align-items: flex-start; gap: 4px; }
+}
+
+`;
+
+export default function Page() {
+  return (
+    <>
+      <style>{pageStyles}</style>
+      <SiteInteractions />
+      
+<div className="nav-wrap">
+  <nav className="nav">
+<a href="/" className="logo">
+    <img src="image/logo.png" alt="Digital Supremacy Logo" className="logo-img" />
+</a>
+            <ul className="nav-links">
+      <li><a href="/services">Services</a></li>
+      <li><a href="/case-studies">Case Studies</a></li>
+      <li><a href="/why-us" className="active">Why Us</a></li>
+      <li><a href="/team">Our Team</a></li>
+    </ul>
+    <a className="nav-cta" href="https://calendly.com/addyawan57/15min" target="_blank">Book a Call</a>
+  </nav>
+</div>
+
+
+<div className="container">
+  <section className="hero">
+    <p className="hero-label">Why Us</p>
+    <h1>Stop treating email<br /><span className="dim">like an afterthought.</span></h1>
+    <p className="hero-sub">Done right, email can become one of your biggest revenue channels.</p>
+  </section>
+</div>
+
+
+<div className="container">
+  <section className="video-section">
+    <div className="video-wrap" id="videoWrap">
+      <div className="video-placeholder" id="videoPlaceholder">
+        <div className="video-play-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </div>
+        <p className="video-label">Watch — how we turn email into a consistent revenue channel</p>
+      </div>
+    </div>
+    
+  </section>
+</div>
+
+
+<div className="container">
+  <section className="copy-section">
+    <div className="copy-inner">
+      <h2>Most brands already have the audience.</h2>
+      <p>What's missing is how <strong>everything works together</strong> — strategy, flows, and campaigns all aligned toward one thing: revenue.</p>
+      <p>That's what we build.</p>
+      <div className="statement">
+        A system that makes email consistent, structured, and worth the attention it gets.
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<div className="container">
+  <section className="why-section">
+    <div className="why-header">
+      <h2>Why brands work with us</h2>
+      <p>Not just another email agency. A system built around what actually drives revenue.</p>
+    </div>
+    <div className="why-grid">
+
+      <div className="why-card">
+        <div className="why-card-num">01</div>
+        <h3>Built around revenue, not just sending more emails</h3>
+        <p>Every flow, campaign, and send is tied to a specific revenue outcome. We don't fill calendars. We drive results.</p>
+      </div>
+
+      <div className="why-card">
+        <div className="why-card-num">02</div>
+        <h3>Systems that run consistently, not one-off efforts</h3>
+        <p>We build infrastructure that works 24/7 — automations, segmentation, and campaigns that compound over time without constant intervention.</p>
+      </div>
+
+      <div className="why-card">
+        <div className="why-card-num">03</div>
+        <h3>Strategy and execution working together</h3>
+        <p>Most agencies do one or the other. We do both. Strategy shapes every decision, and execution follows through — no gaps, no handoffs.</p>
+      </div>
+
+      <div className="why-card">
+        <div className="why-card-num">04</div>
+        <h3>Focused on long-term customer value</h3>
+        <p>We're not chasing open rates. We're building retention — repeat buyers, higher LTV, and a list that actually wants to hear from you.</p>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+
+<div className="container">
+  <section className="cta-section">
+    <div className="cta-inner">
+      <h2>Ready to make email a <span className="accent">real</span> part of your revenue?</h2>
+      <p>Book a free 15-minute call. We'll look at your setup and tell you exactly what we'd fix first — no pitch, no fluff.</p>
+      <div className="cta-btns">
+        <a className="btn-primary" href="https://calendly.com/addyawan57/15min" target="_blank">👉 Book a Call</a>
+        <a className="btn-secondary" href="/case-studies">See the results</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<div className="footer-wrap">
+  <div className="container">
+
+    
+    <div className="footer-cta">
+      <div className="footer-cta-left">
+        <h2>Ready to turn email into a revenue channel?</h2>
+        <p>Book a call and we'll show you where your retention system can work harder.</p>
+      </div>
+      <a className="footer-cta-btn" href="https://calendly.com/addyawan57/15min" target="_blank">Schedule a Meeting</a>
+    </div>
+
+    
+    <div className="footer-cols">
+
+      
+      <div>
+        <div className="footer-brand-name">Digital Supremacy</div>
+        <p className="footer-brand-desc">Retention marketing for DTC ecommerce brands. We build email systems that turn traffic, subscribers, and customers into consistent revenue.</p>
+        <div className="footer-brand-email"><a href="mailto:addy@yourdigitalsupremacy.com">addy@yourdigitalsupremacy.com</a></div>
+      </div>
+
+      
+      <div>
+        <div className="footer-col-title">Services</div>
+        <ul className="footer-col-links">
+          <li><a href="/services#strategy">Email Strategy</a></li>
+          <li><a href="/services#flows">Flows</a></li>
+          <li><a href="/services#campaigns">Campaigns</a></li>
+          <li><a href="/services#deliverability">Deliverability</a></li>
+          <li><a href="/services#leadgen">Lead Generation</a></li>
+          <li><a href="/services#shopify">Shopify Management</a></li>
+          <li><a href="/services#platform">Platform Management</a></li>
+        </ul>
+      </div>
+
+      
+      <div>
+        <div className="footer-col-title">Company</div>
+        <ul className="footer-col-links">
+          <li><a href="/why-us">Why Us</a></li>
+          <li><a href="/case-studies">Case Studies</a></li>
+          <li><a href="https://calendly.com/addyawan57/15min" target="_blank">Book a Call</a></li>
+          <li><a href="mailto:addy@yourdigitalsupremacy.com">Contact</a></li>
+        </ul>
+      </div>
+
+      
+      <div>
+        <div className="footer-col-title">Legal</div>
+        <ul className="footer-col-links">
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/terms-of-service">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      
+      <div>
+        <div className="footer-col-title">Social</div>
+        <ul className="footer-col-links">
+          <li><a href="#" target="_blank">LinkedIn</a></li>
+          <li><a href="#" target="_blank">Instagram</a></li>
+          <li><a href="#" target="_blank">YouTube</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    
+    <div className="footer-bottom-bar">
+      <p>© 2026 Digital Supremacy LTD. All rights reserved.</p>
+      <p>Company number: 17183960</p>
+    </div>
+
+  </div>
+</div>
+
+    </>
+  );
+}
