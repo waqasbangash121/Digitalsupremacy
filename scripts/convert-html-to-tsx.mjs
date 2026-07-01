@@ -21,6 +21,48 @@ const voidElements = [
   "wbr",
 ];
 
+const jsxAttributeNames = new Map(
+  [
+    ["stroke-width", "strokeWidth"],
+    ["stroke-linecap", "strokeLinecap"],
+    ["stroke-linejoin", "strokeLinejoin"],
+    ["stroke-miterlimit", "strokeMiterlimit"],
+    ["stroke-dasharray", "strokeDasharray"],
+    ["stroke-dashoffset", "strokeDashoffset"],
+    ["stroke-opacity", "strokeOpacity"],
+    ["fill-opacity", "fillOpacity"],
+    ["fill-rule", "fillRule"],
+    ["clip-rule", "clipRule"],
+    ["clip-path", "clipPath"],
+    ["stop-color", "stopColor"],
+    ["stop-opacity", "stopOpacity"],
+    ["flood-color", "floodColor"],
+    ["flood-opacity", "floodOpacity"],
+    ["color-interpolation-filters", "colorInterpolationFilters"],
+    ["dominant-baseline", "dominantBaseline"],
+    ["alignment-baseline", "alignmentBaseline"],
+    ["baseline-shift", "baselineShift"],
+    ["text-anchor", "textAnchor"],
+    ["font-family", "fontFamily"],
+    ["font-size", "fontSize"],
+    ["letter-spacing", "letterSpacing"],
+    ["word-spacing", "wordSpacing"],
+    ["gradientunits", "gradientUnits"],
+    ["gradienttransform", "gradientTransform"],
+    ["patternunits", "patternUnits"],
+    ["patterncontentunits", "patternContentUnits"],
+    ["preserveaspectratio", "preserveAspectRatio"],
+    ["viewbox", "viewBox"],
+    ["markerwidth", "markerWidth"],
+    ["markerheight", "markerHeight"],
+    ["refx", "refX"],
+    ["refy", "refY"],
+    ["filterunits", "filterUnits"],
+    ["xmlns:xlink", "xmlnsXlink"],
+    ["xlink:href", "xlinkHref"],
+  ].map(([htmlName, jsxName]) => [htmlName, jsxName]),
+);
+
 const kebabToCamelCase = (value) =>
   value.replace(/-([a-z])/g, (_, character) => character.toUpperCase());
 
@@ -74,6 +116,12 @@ function convertInteractions(markup) {
     .replace(/\sonclick="[^"]*"/gi, "");
 }
 
+function convertSvgAttributes(markup) {
+  return markup.replace(/\s([a-zA-Z][\w:-]*)=/g, (match, attributeName) => {
+    return ` ${jsxAttributeNames.get(attributeName.toLowerCase()) ?? attributeName}=`;
+  });
+}
+
 function closeVoidTags(markup) {
   const pattern = new RegExp(`<(${voidElements.join("|")})(\\b[^>]*?)(?<!\\/)>`, "gi");
   return markup.replace(pattern, "<$1$2 />");
@@ -81,17 +129,19 @@ function closeVoidTags(markup) {
 
 function convertMarkupToJsx(markup) {
   return closeVoidTags(
-    convertLinks(convertInteractions(markup))
-      .replace(/<!--[\s\S]*?-->/g, "")
-      .replace(/<script[\s\S]*?<\/script>/gi, "")
-      .replace(/\sclass=/gi, " className=")
-      .replace(/\sfor=/gi, " htmlFor=")
-      .replace(/\stabindex=/gi, " tabIndex=")
-      .replace(/\scolspan=/gi, " colSpan=")
-      .replace(/\srowspan=/gi, " rowSpan=")
-      .replace(/\smaxlength=/gi, " maxLength=")
-      .replace(/\sreadonly(=|\s|>)/gi, " readOnly$1")
-      .replace(/\sstyle="([^"]*)"/gi, (_, styleText) => ` style={${cssToReactStyle(styleText)}}`),
+    convertSvgAttributes(
+      convertLinks(convertInteractions(markup))
+        .replace(/<!--[\s\S]*?-->/g, "")
+        .replace(/<script[\s\S]*?<\/script>/gi, "")
+        .replace(/\sclass=/gi, " className=")
+        .replace(/\sfor=/gi, " htmlFor=")
+        .replace(/\stabindex=/gi, " tabIndex=")
+        .replace(/\scolspan=/gi, " colSpan=")
+        .replace(/\srowspan=/gi, " rowSpan=")
+        .replace(/\smaxlength=/gi, " maxLength=")
+        .replace(/\sreadonly(=|\s|>)/gi, " readOnly$1")
+        .replace(/\sstyle="([^"]*)"/gi, (_, styleText) => ` style={${cssToReactStyle(styleText)}}`),
+    ),
   );
 }
 
