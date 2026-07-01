@@ -65,6 +65,57 @@
   grid-column: span 6;
 }
 
+/* Two evidence cards wrapped in individual div elements. */
+.page--case-studies.page--case-studies .screenshots-group.two-screenshots > div {
+  display: grid;
+  grid-column: span 6;
+  min-width: 0;
+  gap: 12px;
+}
+
+.page--case-studies.page--case-studies .screenshots-group.two-screenshots > div > .screenshot-label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.page--case-studies.page--case-studies .screenshots-group.two-screenshots > div > .screenshot-label::before {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  content: "";
+  background: var(--red);
+  box-shadow: 0 0 0 4px rgba(193, 18, 31, 0.13);
+}
+
+.page--case-studies.page--case-studies .screenshots-group.two-screenshots > div > .screenshot-img {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: #0a0a0b;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+  object-fit: contain;
+  transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.page--case-studies.page--case-studies .screenshots-group.two-screenshots > div > .screenshot-img:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
 /* A single item marked half should still use the full gallery width. */
 .page--case-studies.page--case-studies .screenshots-group > .screenshot-img.half:only-of-type {
   grid-column: 1 / -1;
@@ -79,6 +130,7 @@
     border-radius: 14px;
   }
 
+  .page--case-studies.page--case-studies .screenshots-group.two-screenshots > div,
   .page--case-studies.page--case-studies .screenshots-group > .screenshot-img,
   .page--case-studies.page--case-studies .screenshots-group.two-screenshots > .screenshot-img,
   .page--case-studies.page--case-studies .screenshots-group > .screenshot-img.half {
@@ -86,7 +138,8 @@
     border-radius: 9px;
   }
 
-  .page--case-studies.page--case-studies .screenshots-group > .screenshot-img:hover {
+  .page--case-studies.page--case-studies .screenshots-group > .screenshot-img:hover,
+  .page--case-studies.page--case-studies .screenshots-group.two-screenshots > div > .screenshot-img:hover {
     transform: none;
   }
 }
