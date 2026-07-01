@@ -1,10 +1,10 @@
 const caseStudiesOverrides = String.raw`
-/* Case-study presentation requested in the case studies brief. */
+/* Keep the normal site canvas black. */
 .case-studies-page {
   background: var(--bg);
 }
 
-/* Keep the site canvas black. Only the individual case-study panels are light gray. */
+/* The brief requests light-gray treatment only for the two case-study sections. */
 .case-studies-page > .container:has(.case-study) {
   max-width: 1200px;
   margin: 0 auto;
@@ -12,7 +12,7 @@ const caseStudiesOverrides = String.raw`
   background: transparent;
 }
 
-/* Black spacing separates the two individual study panels. */
+/* Black space separates the first case study from the second. */
 .case-studies-page > .container:has(.case-study) + .container:has(.case-study) {
   padding-top: 72px;
 }
@@ -27,120 +27,38 @@ const caseStudiesOverrides = String.raw`
   color: #17181b;
 }
 
-.case-studies-page .case-study .cs-header,
-.case-studies-page .case-study .cs-story {
-  max-width: 1120px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
+/* Text that sits directly on the light-gray case-study panel. */
 .case-studies-page .case-study .cs-title,
 .case-studies-page .case-study .phase-title,
-.case-studies-page .case-study .col-block h3,
-.case-studies-page .case-study .diff-block h3,
-.case-studies-page .case-study .cs-closing,
 .case-studies-page .case-study .deliv-table td:first-child {
   color: #17181b;
 }
 
 .case-studies-page .case-study .cs-tag,
 .case-studies-page .case-study .cs-story-title,
-.case-studies-page .case-study .col-block-label,
-.case-studies-page .case-study .result-card-label,
-.case-studies-page .case-study .cs-period-label {
+.case-studies-page .case-study .deliv-table th {
   color: #565a60;
 }
 
 .case-studies-page .case-study .cs-subtitle,
 .case-studies-page .case-study .phase-desc,
-.case-studies-page .case-study .col-block li,
-.case-studies-page .case-study .diff-list li,
-.case-studies-page .case-study .result-card-sub,
-.case-studies-page .case-study .stat-item-label,
-.case-studies-page .case-study .cs-period-val,
 .case-studies-page .case-study .deliv-table td {
   color: #5f646b;
 }
 
 .case-studies-page .case-study .cs-story-title,
 .case-studies-page .case-study .deliv-table th,
-.case-studies-page .case-study .deliv-table td,
-.case-studies-page .case-study .cs-period,
-.case-studies-page .case-study .col-block,
-.case-studies-page .case-study .diff-block,
-.case-studies-page .case-study .cs-closing {
+.case-studies-page .case-study .deliv-table td {
   border-color: #d4d7da;
 }
 
-.case-studies-page .case-study .cs-period,
-.case-studies-page .case-study .col-block,
-.case-studies-page .case-study .diff-block,
-.case-studies-page .case-study .cs-closing {
-  background: #ffffff;
-}
-
-.case-studies-page .case-study .col-block li::before {
-  background: #17181b;
-}
-
-.case-studies-page .case-study .col-block.solution li::before {
-  background: var(--green);
-}
-
-.case-studies-page .case-study .phase-num {
-  background: #17181b;
-  border-color: #17181b;
-  color: #ffffff;
-}
-
-.case-studies-page .case-study .diff-block {
-  border-left-color: #17181b;
-}
-
-.case-studies-page .case-study .diff-list li::before,
-.case-studies-page .case-study .cs-closing strong {
-  color: #17181b;
-}
-
-/* Keep the results on dark cards and make former red figures white. */
-.case-studies-page .case-study .stat-strip {
-  max-width: 1120px;
-  margin: 0 auto 56px;
-  background: #303338;
-  border-color: #303338;
-  box-shadow: 0 18px 38px rgba(15, 15, 16, 0.12);
-}
-
-.case-studies-page .case-study .stat-item,
-.case-studies-page .case-study .result-card {
-  background: #17181b;
-  border-color: #303338;
-}
-
-.case-studies-page .case-study .stat-item-val,
+/* Preserve all existing card backgrounds and colors. Only former red figures become white. */
 .case-studies-page .case-study .stat-item-val .highlight,
 .case-studies-page .case-study .result-card-num.red {
   color: #ffffff;
 }
 
-.case-studies-page .case-study .stat-item-label,
-.case-studies-page .case-study .result-card-label,
-.case-studies-page .case-study .result-card-sub {
-  color: #c4c7cc;
-}
-
-.case-studies-page .case-study .results-grid {
-  max-width: 1120px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 28px;
-}
-
-.case-studies-page .case-study .result-card-num:not(.red):not(.green) {
-  color: #ffffff;
-}
-
-/* Screenshot placement: one clear frame per image, with a responsive two-up layout when supplied. */
+/* Screenshot placement requested in the brief. */
 .case-studies-page .case-study .screenshots-group {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -177,7 +95,7 @@ const caseStudiesOverrides = String.raw`
   box-shadow: 0 18px 38px rgba(15, 15, 16, 0.16);
 }
 
-/* Return to the black site treatment once the final study ends. */
+/* Return to the original dark site treatment after the second study. */
 .case-studies-page .cta-band {
   background: var(--bg);
 }
