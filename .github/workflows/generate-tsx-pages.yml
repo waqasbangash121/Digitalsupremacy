@@ -1,0 +1,44 @@
+name: Generate TSX pages
+
+on:
+  push:
+    branches:
+      - tsx-page-migration
+    paths:
+      - "*.html"
+      - "scripts/convert-html-to-tsx.mjs"
+      - ".github/workflows/generate-tsx-pages.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the migration branch
+        uses: actions/checkout@v4
+        with:
+          ref: tsx-page-migration
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Convert legacy HTML files to TSX routes
+        run: node scripts/convert-html-to-tsx.mjs
+
+      - name: Commit generated TSX files
+        run: |
+          if git diff --quiet; then
+            echo "No generated changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A app components lib
+          git commit -m "feat: generate TSX routes from legacy HTML"
+          git push origin HEAD:tsx-page-migration
