@@ -1,0 +1,67 @@
+/* Case studies screenshot gallery — intentionally scoped to this route only. */
+.page--case-studies .screenshots-group {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 18px;
+  width: min(1120px, 100%);
+  margin: 32px auto 48px;
+  padding: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg-raised);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.24);
+}
+
+.page--case-studies .screenshots-group > .screenshot-label {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.page--case-studies .screenshots-group > .screenshot-img {
+  display: block;
+  grid-column: 1 / -1;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: #0a0a0b;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
+  object-fit: contain;
+}
+
+/* Paired metric screenshots sit side-by-side when the source marks them as a pair. */
+.page--case-studies .screenshots-group.two-screenshots > .screenshot-img,
+.page--case-studies .screenshots-group > .screenshot-img.half {
+  grid-column: span 6;
+}
+
+/* Avoid an unnecessarily narrow single screenshot on compact desktop widths. */
+.page--case-studies .screenshots-group > .screenshot-img.half:only-of-type {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 760px) {
+  .page--case-studies .screenshots-group {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin: 28px auto 40px;
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .page--case-studies .screenshots-group > .screenshot-img,
+  .page--case-studies .screenshots-group.two-screenshots > .screenshot-img,
+  .page--case-studies .screenshots-group > .screenshot-img.half {
+    grid-column: 1;
+    border-radius: 8px;
+  }
+}
