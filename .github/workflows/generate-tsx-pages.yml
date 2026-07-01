@@ -3,10 +3,14 @@ name: Generate TSX pages
 on:
   push:
     branches:
+      - main
       - tsx-page-migration
+      - case-studies-brief
     paths:
       - "*.html"
       - "scripts/convert-html-to-tsx.mjs"
+      - "scripts/apply-case-studies-brief.mjs"
+      - "scripts/case-studies-overrides.mjs"
       - ".github/workflows/generate-tsx-pages.yml"
       - "package.json"
 
@@ -18,10 +22,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out the migration branch
+      - name: Check out the current branch
         uses: actions/checkout@v4
         with:
-          ref: tsx-page-migration
+          ref: ${{ github.ref_name }}
 
       - name: Use Node.js 22
         uses: actions/setup-node@v4
@@ -31,8 +35,8 @@ jobs:
       - name: Install dependencies without lifecycle scripts
         run: npm install --ignore-scripts
 
-      - name: Convert legacy HTML files to TSX routes
-        run: node scripts/convert-html-to-tsx.mjs
+      - name: Generate real TSX routes
+        run: npm run migrate:tsx
 
       - name: Verify the generated Next.js build
         run: npm run build
@@ -48,4 +52,4 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A app components lib
           git commit -m "feat: generate TSX routes from legacy HTML"
-          git push origin HEAD:tsx-page-migration
+          git push origin HEAD:${{ github.ref_name }}
