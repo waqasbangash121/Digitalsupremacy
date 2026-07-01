@@ -6,15 +6,13 @@
     "node": ">=20.9.0"
   },
   "scripts": {
-    "migrate:tsx": "node scripts/convert-html-to-tsx.mjs && node scripts/apply-case-studies-brief.mjs && node scripts/normalize-generated-jsx.mjs",
-    "postinstall": "npm run migrate:tsx",
-    "predev": "node scripts/sync-static-assets.mjs && npm run migrate:tsx",
     "dev": "next dev",
-    "prebuild": "node scripts/sync-static-assets.mjs && npm run migrate:tsx",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "check": "npm run lint && npm run build"
+    "check": "npm run lint && npm run build",
+    "externalize:css": "node scripts/externalize-page-css.mjs",
+    "migrate:legacy": "node scripts/convert-html-to-tsx.mjs && node scripts/apply-case-studies-brief.mjs && node scripts/normalize-generated-jsx.mjs && npm run externalize:css"
   },
   "dependencies": {
     "next": "^16.2.9",
