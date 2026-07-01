@@ -1,7 +1,2 @@
 @import "tailwindcss";
-
-/*
- * The visual system remains in each legacy HTML document and is injected by
- * the Next.js page renderer. Tailwind is available for future components
- * without changing the live design during this migration.
- */
+@import "./case-studies/screenshots.css";
