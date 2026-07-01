@@ -4,25 +4,26 @@ const caseStudiesOverrides = String.raw`
   background: var(--bg);
 }
 
-/* Each case study is a full-width light-gray band. */
+/* Keep the site canvas black. Only the individual case-study panels are light gray. */
 .case-studies-page > .container:has(.case-study) {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  background: #eceef0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 24px 0;
+  background: transparent;
 }
 
-/* Reset to black between the two separate case studies. */
+/* Black spacing separates the two individual study panels. */
 .case-studies-page > .container:has(.case-study) + .container:has(.case-study) {
-  border-top: 72px solid var(--bg);
+  padding-top: 72px;
 }
 
 .case-studies-page .case-study {
-  width: min(1200px, 100%);
-  margin: 0 auto;
-  padding: 80px 24px;
+  width: 100%;
+  margin: 0;
+  padding: 80px 48px;
   border: 0;
+  border-radius: 18px;
+  background: #eceef0;
   color: #17181b;
 }
 
@@ -182,12 +183,17 @@ const caseStudiesOverrides = String.raw`
 }
 
 @media (max-width: 700px) {
+  .case-studies-page > .container:has(.case-study) {
+    padding: 40px 16px 0;
+  }
+
   .case-studies-page > .container:has(.case-study) + .container:has(.case-study) {
-    border-top-width: 48px;
+    padding-top: 48px;
   }
 
   .case-studies-page .case-study {
-    padding: 56px 16px;
+    padding: 56px 20px;
+    border-radius: 14px;
   }
 
   .case-studies-page .case-study .screenshots-group.two-screenshots {
