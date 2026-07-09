@@ -1,0 +1,137 @@
+/* Corrective homepage fixes: restore dark cards and visible separators. */
+.page--home {
+  --home-card-white: var(--bg-card) !important;
+  --home-card-text: var(--text) !important;
+  --home-soft-border: var(--border) !important;
+}
+
+/* Restore visible structural separator lines removed by home-overrides.css. */
+.page--home .nav-wrap {
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.page--home .divider {
+  display: block !important;
+  height: 1px !important;
+  background: var(--border) !important;
+}
+
+.page--home .brands-section {
+  border-top: 1px solid var(--border) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.page--home .stat-fine,
+.page--home .case-img,
+.page--home .cal-header,
+.page--home .footer-wrap,
+.page--home .footer-cta,
+.page--home .footer-cols {
+  border-color: var(--border) !important;
+}
+
+.page--home .stat-fine {
+  border-top: 1px solid var(--border) !important;
+}
+
+.page--home .case-img {
+  border-top: 1px solid var(--border) !important;
+}
+
+.page--home .cal-header {
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.page--home .footer-wrap {
+  border-top: 1px solid var(--border) !important;
+}
+
+.page--home .footer-cta,
+.page--home .footer-cols {
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.page--home .review-author {
+  border-left: 1px solid var(--border) !important;
+}
+
+/* Restore the original dark card look instead of flat white blocks. */
+.page--home .stats-grid {
+  gap: 1px !important;
+  background: var(--border) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.page--home .stat,
+.page--home .bullet-card,
+.page--home .why-item,
+.page--home .mc-dark,
+.page--home .mc-red,
+.page--home .case-card,
+.page--home .cal-box,
+.page--home .template-card,
+.page--home .review-card,
+.page--home .mission-stamp,
+.page--home .ttag,
+.page--home .sarrow {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  box-shadow: none !important;
+}
+
+.page--home .bullet-card:hover,
+.page--home .why-item:hover,
+.page--home .mc-dark:hover,
+.page--home .case-card:hover,
+.page--home .template-card:hover,
+.page--home .sarrow:hover {
+  border-color: #555 !important;
+}
+
+.page--home .case-img {
+  background: var(--bg-card) !important;
+}
+
+.page--home .bullet-title,
+.page--home .why-title,
+.page--home .step-title,
+.page--home .mc-val,
+.page--home .case-headline,
+.page--home .template-card h3,
+.page--home .cal-title,
+.page--home .review-text,
+.page--home .r-name {
+  color: var(--text) !important;
+}
+
+.page--home .bullet-desc,
+.page--home .why-desc,
+.page--home .step-desc,
+.page--home .mc-desc,
+.page--home .case-period,
+.page--home .template-card p,
+.page--home .cal-sub,
+.page--home .r-biz,
+.page--home .mission-stamp,
+.page--home .ttag {
+  color: var(--text-muted) !important;
+}
+
+.page--home .mc-num,
+.page--home .case-headline span,
+.page--home .template-card a {
+  color: var(--red) !important;
+}
+
+/* Keep the Calendly iframe white because the embedded scheduler itself is a white UI. */
+.page--home .calendly-full-calendar {
+  background: #ffffff !important;
+}
+
+@media (max-width: 768px) {
+  .page--home .review-author {
+    border-left: none !important;
+    border-top: 1px solid var(--border) !important;
+  }
+}
