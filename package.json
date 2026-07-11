@@ -11,6 +11,7 @@
     "start": "next start",
     "lint": "eslint .",
     "check": "npm run lint && npm run build",
+    "db:init": "node scripts/init-admin-db.mjs",
     "externalize:css": "node scripts/externalize-page-css.mjs",
     "migrate:legacy": "node scripts/convert-html-to-tsx.mjs && node scripts/apply-case-studies-brief.mjs && node scripts/normalize-generated-jsx.mjs && npm run externalize:css"
   },
