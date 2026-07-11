@@ -2,17 +2,17 @@
 
 import { useEffect } from "react";
 
-type Settings = {
-  linkedin_url: string;
-  instagram_url: string;
-  youtube_url: string;
-};
+const channels = [
+  ["linkedin", "LinkedIn"],
+  ["instagram", "Instagram"],
+  ["youtube", "YouTube"],
+  ["facebook", "Facebook"],
+  ["twitter", "X / Twitter"],
+  ["tiktok", "TikTok"],
+] as const;
 
-const labels: Array<[keyof Settings, string]> = [
-  ["linkedin_url", "LinkedIn"],
-  ["instagram_url", "Instagram"],
-  ["youtube_url", "YouTube"],
-];
+type Settings = Record<`${(typeof channels)[number][0]}_url`, string> &
+  Record<`${(typeof channels)[number][0]}_enabled`, boolean>;
 
 export default function FooterSocialSync() {
   useEffect(() => {
@@ -27,22 +27,23 @@ export default function FooterSocialSync() {
 
         const titles = Array.from(document.querySelectorAll<HTMLElement>(".footer-col-title"));
         const socialTitle = titles.find((node) => node.textContent?.trim() === "Social");
-        const links = socialTitle?.parentElement?.querySelectorAll<HTMLAnchorElement>(".footer-col-links a");
-        if (!links) return;
+        const list = socialTitle?.parentElement?.querySelector<HTMLUListElement>(".footer-col-links");
+        if (!list) return;
 
-        labels.forEach(([key, label], index) => {
-          const link = links[index];
-          if (!link) return;
-          const url = settings[key]?.trim();
+        list.innerHTML = "";
+        channels.forEach(([key, label]) => {
+          const url = settings[`${key}_url`]?.trim();
+          const enabled = settings[`${key}_enabled`];
+          if (!enabled || !url) return;
+
+          const item = document.createElement("li");
+          const link = document.createElement("a");
+          link.href = url;
+          link.target = "_blank";
+          link.rel = "noreferrer";
           link.textContent = label;
-          if (url) {
-            link.href = url;
-            link.target = "_blank";
-            link.rel = "noreferrer";
-            link.closest("li")?.removeAttribute("hidden");
-          } else {
-            link.closest("li")?.setAttribute("hidden", "");
-          }
+          item.appendChild(link);
+          list.appendChild(item);
         });
       } catch {
         // Keep the existing footer unchanged if settings cannot be loaded.
