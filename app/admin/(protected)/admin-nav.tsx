@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 const links = [
   { href: "/admin/team", label: "Team", icon: "TM" },
   { href: "/admin/case-studies", label: "Case Studies", icon: "CS" },
+  { href: "/admin/templates", label: "Templates", icon: "TP" },
 ];
 
 export default function AdminNav() {
