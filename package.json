@@ -15,6 +15,7 @@
     "migrate:legacy": "node scripts/convert-html-to-tsx.mjs && node scripts/apply-case-studies-brief.mjs && node scripts/normalize-generated-jsx.mjs && npm run externalize:css"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "next": "^16.2.9",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
