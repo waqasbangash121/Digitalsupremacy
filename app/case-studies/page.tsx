@@ -3,6 +3,7 @@ import SiteInteractions from "@/components/site-interactions";
 import { getCaseStudies } from "@/lib/db";
 import CaseStudyView from "./case-study-view";
 import "./page.css";
+import "./database-case-studies.css";
 
 export const metadata: Metadata = {
   title: "Case Studies — Digital Supremacy",
