@@ -93,29 +93,24 @@ export default function BlogEditor({ defaultValue = "" }: { defaultValue?: strin
     syncHtml();
   }
 
-  const toolbarMouseDown = (event: React.MouseEvent) => {
-    event.preventDefault();
-    rememberSelection();
-  };
-
   return (
     <div className="blog-editor-shell">
-      <div className="blog-editor-toolbar" onMouseDown={toolbarMouseDown}>
-        <select aria-label="Text style" defaultValue="p" onChange={(event) => command("formatBlock", event.target.value)}>
+      <div className="blog-editor-toolbar">
+        <select aria-label="Text style" defaultValue="p" onFocus={rememberSelection} onChange={(event) => command("formatBlock", event.target.value)}>
           <option value="p">Paragraph</option>
           <option value="h2">Heading 2</option>
           <option value="h3">Heading 3</option>
           <option value="blockquote">Quote</option>
         </select>
         <span className="blog-editor-divider" />
-        <button type="button" title="Bold" onClick={() => command("bold")}><strong>B</strong></button>
-        <button type="button" title="Italic" onClick={() => command("italic")}><em>I</em></button>
-        <button type="button" title="Underline" onClick={() => command("underline")}><u>U</u></button>
-        <button type="button" title="Bullet list" onClick={() => command("insertUnorderedList")}>• List</button>
-        <button type="button" title="Numbered list" onClick={() => command("insertOrderedList")}>1. List</button>
-        <button type="button" title="Add link" onClick={insertLink}>Link</button>
-        <button type="button" title="Remove formatting" onClick={() => command("removeFormat")}>Clear</button>
-        <label className="blog-editor-image">Add image<input type="file" accept="image/jpeg,image/png,image/webp,image/gif" onChange={(event) => { const file = event.target.files?.[0]; if (file) void insertImage(file); event.currentTarget.value = ""; }} /></label>
+        <button type="button" title="Bold" onMouseDown={rememberSelection} onClick={() => command("bold")}><strong>B</strong></button>
+        <button type="button" title="Italic" onMouseDown={rememberSelection} onClick={() => command("italic")}><em>I</em></button>
+        <button type="button" title="Underline" onMouseDown={rememberSelection} onClick={() => command("underline")}><u>U</u></button>
+        <button type="button" title="Bullet list" onMouseDown={rememberSelection} onClick={() => command("insertUnorderedList")}>• List</button>
+        <button type="button" title="Numbered list" onMouseDown={rememberSelection} onClick={() => command("insertOrderedList")}>1. List</button>
+        <button type="button" title="Add link" onMouseDown={rememberSelection} onClick={insertLink}>Link</button>
+        <button type="button" title="Remove formatting" onMouseDown={rememberSelection} onClick={() => command("removeFormat")}>Clear</button>
+        <label className="blog-editor-image" onMouseDown={rememberSelection}>Add image<input type="file" accept="image/jpeg,image/png,image/webp,image/gif" onChange={(event) => { const file = event.target.files?.[0]; if (file) void insertImage(file); event.currentTarget.value = ""; }} /></label>
       </div>
 
       <div
@@ -132,7 +127,7 @@ export default function BlogEditor({ defaultValue = "" }: { defaultValue?: strin
         onFocus={rememberSelection}
         dangerouslySetInnerHTML={{ __html: initialHtml }}
       />
-      <textarea name="contentMarkdown" value={html} readOnly hidden required />
+      <textarea name="contentMarkdown" value={html} readOnly hidden />
       <div className="blog-editor-status"><span>Rich text editor</span><span>{html.replace(/<[^>]*>/g, " ").trim().split(/\s+/).filter(Boolean).length} words</span></div>
     </div>
   );
