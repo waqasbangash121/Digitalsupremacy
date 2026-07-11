@@ -56,6 +56,12 @@ export default function Page() {
   </section>
 </div>
 
+<div className="container">
+  <section className="scale-prompt">
+    <h2>READY TO SCALE?</h2>
+    <a className="btn-primary" href="#calendly">BOOK A CALL</a>
+  </section>
+</div>
 
 <div className="container">
   <section className="copy-section">
@@ -109,12 +115,12 @@ export default function Page() {
 
 
 <div className="container">
-  <section className="cta-section">
+  <section className="cta-section" id="calendly">
     <div className="cta-inner">
       <h2>Ready to make email a <span className="accent">real</span> part of your revenue?</h2>
       <p>Book a free 15-minute call. We'll look at your setup and tell you exactly what we'd fix first — no pitch, no fluff.</p>
       <div className="cta-btns">
-        <a className="btn-primary" href="https://calendly.com/addyawan57/15min" target="_blank">👉 Book a Call</a>
+        <a className="btn-primary" href="https://calendly.com/addyawan57/15min" target="_blank">Book a Call</a>
         <a className="btn-secondary" href="/case-studies">See the results</a>
       </div>
     </div>

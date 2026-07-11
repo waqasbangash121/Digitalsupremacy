@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./page.css";
+import "../legal-pages.css";
 
 import SiteInteractions from "@/components/site-interactions";
 
