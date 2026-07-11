@@ -41,19 +41,17 @@ export default async function TemplatesPage() {
             <div className="templates-grid">
               {templates.map((template) => (
                 <article className={`template-card ${template.is_featured ? "featured" : ""}`} key={template.id}>
-                  <a className="template-card-link" href={`/templates/${template.slug}`} aria-label={`View ${template.title}`}>
-                    <div className="template-image">
-                      {template.is_featured && <span className="template-featured">Featured</span>}
-                      {template.image_url ? <img src={template.image_url} alt={`${template.title} template`} /> : <div className="template-placeholder">DS</div>}
-                    </div>
-                  </a>
+                  <div className="template-image">
+                    {template.is_featured && <span className="template-featured">Featured</span>}
+                    {template.image_url ? <img src={template.image_url} alt={`${template.title} template`} /> : <div className="template-placeholder">DS</div>}
+                  </div>
                   <div className="template-card-content">
                     <div className="template-category">{template.category || "Email Template"}</div>
-                    <h2><a href={`/templates/${template.slug}`}>{template.title}</a></h2>
+                    <h2>{template.title}</h2>
                     {template.description && <p>{template.description}</p>}
                     <div className="template-actions">
-                      <a className="template-primary" href={`/templates/${template.slug}`}>View template</a>
-                      {template.preview_url && <a href={template.preview_url} target="_blank" rel="noreferrer">External preview <span>↗</span></a>}
+                      {template.preview_url && <a href={template.preview_url} target="_blank" rel="noreferrer">Preview <span>↗</span></a>}
+                      {template.download_url ? <a className="template-primary" href={template.download_url} target="_blank" rel="noreferrer">Get template</a> : <a className="template-primary" href="https://calendly.com/addyawan57/15min" target="_blank" rel="noreferrer">Request access</a>}
                     </div>
                   </div>
                 </article>
