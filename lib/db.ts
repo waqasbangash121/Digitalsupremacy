@@ -6,7 +6,10 @@ if (!connectionString) {
   throw new Error("DATABASE_URL is not configured");
 }
 
-const globalForDb = globalThis as unknown as { sql?: ReturnType<typeof postgres> };
+const globalForDb = globalThis as unknown as {
+  sql?: ReturnType<typeof postgres>;
+  caseStudiesSchemaPromise?: Promise<void>;
+};
 
 export const sql =
   globalForDb.sql ??
@@ -89,4 +92,100 @@ export async function getTeamMembers(includeInactive = false) {
     : await sql<TeamMemberRow[]>`select * from team_members where is_active = true order by is_founder desc, sort_order asc, created_at asc`;
 
   return rows.map(hydrateTeamMember);
+}
+
+export type CaseStudyMetric = {
+  value: string;
+  label: string;
+};
+
+export type CaseStudy = {
+  id: string;
+  slug: string;
+  title: string;
+  client_name: string;
+  industry: string;
+  excerpt: string;
+  project_period: string;
+  challenge: string;
+  solution: string;
+  results: string;
+  cover_image_url: string;
+  metrics: CaseStudyMetric[];
+  sort_order: number;
+  is_active: boolean;
+  created_at: Date;
+  updated_at: Date;
+};
+
+type CaseStudyRow = Omit<CaseStudy, "metrics"> & { metrics_json: string };
+
+async function createCaseStudiesSchema() {
+  const [{ exists }] = await sql<{ exists: boolean }[]>`
+    select to_regclass('public.case_studies') is not null as exists
+  `;
+
+  if (!exists) {
+    await sql`
+      create table if not exists case_studies (
+        id text primary key,
+        slug text not null unique,
+        title text not null,
+        client_name text not null default '',
+        industry text not null default '',
+        excerpt text not null default '',
+        project_period text not null default '',
+        challenge text not null default '',
+        solution text not null default '',
+        results text not null default '',
+        cover_image_url text not null default '',
+        metrics_json text not null default '[]',
+        sort_order integer not null default 0,
+        is_active boolean not null default true,
+        created_at timestamptz not null default now(),
+        updated_at timestamptz not null default now()
+      )
+    `;
+  }
+}
+
+export async function ensureCaseStudiesSchema() {
+  globalForDb.caseStudiesSchemaPromise ??= createCaseStudiesSchema().catch((error) => {
+    globalForDb.caseStudiesSchemaPromise = undefined;
+    throw error;
+  });
+  return globalForDb.caseStudiesSchemaPromise;
+}
+
+function hydrateCaseStudy(row: CaseStudyRow): CaseStudy {
+  let metrics: CaseStudyMetric[] = [];
+  try {
+    const parsed = JSON.parse(row.metrics_json) as unknown;
+    if (Array.isArray(parsed)) {
+      metrics = parsed
+        .filter((item): item is CaseStudyMetric => Boolean(item && typeof item === "object" && "value" in item && "label" in item))
+        .map((item) => ({ value: String(item.value), label: String(item.label) }))
+        .slice(0, 4);
+    }
+  } catch {
+    metrics = [];
+  }
+  const { metrics_json: _metricsJson, ...caseStudy } = row;
+  return { ...caseStudy, metrics };
+}
+
+export async function getCaseStudies(includeInactive = false) {
+  await ensureCaseStudiesSchema();
+  const rows = includeInactive
+    ? await sql<CaseStudyRow[]>`select * from case_studies order by sort_order asc, created_at desc`
+    : await sql<CaseStudyRow[]>`select * from case_studies where is_active = true order by sort_order asc, created_at desc`;
+  return rows.map(hydrateCaseStudy);
+}
+
+export async function getCaseStudyBySlug(slug: string, includeInactive = false) {
+  await ensureCaseStudiesSchema();
+  const rows = includeInactive
+    ? await sql<CaseStudyRow[]>`select * from case_studies where slug = ${slug} limit 1`
+    : await sql<CaseStudyRow[]>`select * from case_studies where slug = ${slug} and is_active = true limit 1`;
+  return rows[0] ? hydrateCaseStudy(rows[0]) : null;
 }
