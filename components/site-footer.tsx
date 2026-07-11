@@ -1,6 +1,14 @@
+import { getSiteSettings } from "@/lib/site-settings";
 import "./site-footer.css";
 
-export default function SiteFooter() {
+export default async function SiteFooter() {
+  const settings = await getSiteSettings();
+  const socialLinks = [
+    ["LinkedIn", settings.linkedin_url],
+    ["Instagram", settings.instagram_url],
+    ["YouTube", settings.youtube_url],
+  ].filter(([, url]) => Boolean(url));
+
   return (
     <footer className="footer-wrap">
       <div className="container">
@@ -49,7 +57,9 @@ export default function SiteFooter() {
           </div>
           <div>
             <div className="footer-col-title">Social</div>
-            <ul className="footer-col-links"><li><a href="#">LinkedIn</a></li><li><a href="#">Instagram</a></li><li><a href="#">YouTube</a></li></ul>
+            <ul className="footer-col-links">
+              {socialLinks.map(([label, url]) => <li key={label}><a href={url} target="_blank" rel="noreferrer">{label}</a></li>)}
+            </ul>
           </div>
         </div>
 
