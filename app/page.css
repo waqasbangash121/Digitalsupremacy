@@ -377,7 +377,7 @@
 .page--home .mc {
   border-radius: 12px;
   padding: 32px;
-  min-height: 200px;
+  min-height: 180px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -524,31 +524,40 @@
   line-height: 1.7;
   font-style: italic;
 }
+
 .page--home .review-author {
+  position: relative;
+  overflow: hidden;
+  width: 140px;
+  min-height: 160px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  justify-content: flex-end;
+  gap: 6px;
   text-align: center;
-  min-width: 100px;
-  padding-left: 40px;
-  border-left: 1px solid var(--border);
+  padding: 16px 12px;
+  isolation: isolate;
+}
+.page--home .review-author::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.04) 20%, rgba(0,0,0,0.76) 100%);
+  z-index: -1;
 }
 .page--home .r-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 14px;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  z-index: -2;
 }
-.page--home .av-e { background: #2a1a1a; color: var(--red); }
-.page--home .av-r { background: #1a1a2e; color: #a78bfa; }
-.page--home .av-ro { background: #0e2a1a; color: #4ecb8a; }
-.page--home .r-name { font-weight: 600; font-size: 14px; color: var(--text); }
-.page--home .r-biz { font-size: 12px; color: var(--text-muted); }
+.page--home .r-name { font-weight: 700; font-size: 18px; color: var(--text); }
+.page--home .r-biz { font-size: 14px; color: rgba(255,255,255,0.82); }
 
 .page--home .slider-controls {
   display: flex;
@@ -662,7 +671,7 @@
   .page--home .nav-links { display: none; }
   .page--home .stats-grid, .page--home .mission-cards { grid-template-columns: 1fr; }
   .page--home .review-card { grid-template-columns: 1fr; }
-  .page--home .review-author { border-left: none; border-top: 1px solid var(--border); padding-left: 0; padding-top: 20px; flex-direction: row; text-align: left; }
+  .page--home .review-author { width: 100%; min-height: 260px; }
   .page--home .cal-header { grid-template-columns: 1fr; }
   .page--home .footer-grid { grid-template-columns: 1fr; }
   .page--home .pf-banner { flex-direction: column; text-align: center; padding: 40px 32px; margin-left: 24px; margin-right: 24px; }
@@ -791,5 +800,3 @@
   .page--home .footer-cta { padding: 48px 0; }
   .page--home .footer-bottom-bar { flex-direction: column; align-items: flex-start; gap: 4px; }
 }
-
-
