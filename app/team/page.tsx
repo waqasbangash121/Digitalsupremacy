@@ -1,22 +1,18 @@
 import type { Metadata } from "next";
 import "./page.css";
-
-const team = [
-  { name: "Safa", initials: "SA", role: "Senior Strategist and Team Lead", tag: "Strategy", tone: "safa" },
-  { name: "Layla", initials: "LA", role: "Success Manager", tag: "Client Success", tone: "layla" },
-  { name: "Sila", initials: "SI", role: "Success Manager", tag: "Client Success", tone: "sila" },
-  { name: "Somal", initials: "SO", role: "Accounts Manager", tag: "Client Success", tone: "somal" },
-  { name: "Roosh", initials: "RO", role: "Graphic Designer", tag: "Creative", tone: "roosh" },
-  { name: "Usama", initials: "US", role: "Copywriter", tag: "Copy", tone: "usama" },
-  { name: "Hadiya", initials: "HA", role: "Full Stack Email Marketer", tag: "Email", tone: "hadiya" },
-];
+import { getTeamMembers } from "@/lib/db";
 
 export const metadata: Metadata = {
   title: "Our Team — Digital Supremacy",
   description: "Meet the team behind Digital Supremacy.",
 };
 
-export default function TeamPage() {
+export const dynamic = "force-dynamic";
+
+export default async function TeamPage() {
+  const members = await getTeamMembers();
+  const founder = members.find((member) => member.is_founder);
+  const team = members.filter((member) => !member.is_founder);
   return (
     <div className="page page--team">
       <div className="nav-wrap">
@@ -45,21 +41,23 @@ export default function TeamPage() {
 
         <div className="container">
           <section className="team-section">
-            <article className="founder-card">
-              <div className="founder-avatar" aria-hidden="true">AD</div>
+            {founder && <article className="founder-card">
+              <div className={"founder-avatar " + (founder.image_url ? "has-image" : "")} aria-hidden="true">
+                {founder.image_url ? <img src={founder.image_url} alt="" /> : founder.initials}
+              </div>
               <div className="founder-info">
                 <div className="founder-tag">Founder</div>
-                <h2 className="founder-name">Addy</h2>
-                <div className="founder-role">Founder, Digital Supremacy</div>
-                <p className="founder-bio">Leads strategy and sets the standard for every client relationship — built on results, not promises. Hands-on with every account from day one.</p>
+                <h2 className="founder-name">{founder.name}</h2>
+                <div className="founder-role">{founder.role}</div>
+                {founder.bio && <p className="founder-bio">{founder.bio}</p>}
               </div>
-            </article>
+            </article>}
 
             <div className="team-grid">
               {team.map((member, index) => (
                 <article className="team-card" key={member.name}>
-                  <div className={`team-avatar av-${member.tone}`} aria-hidden="true">
-                    <span>{member.initials}</span>
+                  <div className={"team-avatar av-" + member.tone + (member.image_url ? " has-image" : "")} aria-hidden="true">
+                    {member.image_url ? <img src={member.image_url} alt="" /> : <span>{member.initials}</span>}
                     <small>{String(index + 1).padStart(2, "0")}</small>
                   </div>
                   <div className="team-card-info">
