@@ -1,3 +1,71 @@
 @import "tailwindcss";
 @import "./case-studies/screenshots.css";
 @import "./case-studies/page-polish.css";
+
+:root {
+  --site-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html,
+body {
+  font-family: var(--site-font);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--site-font);
+}
+
+/* Keep typography consistent with the homepage across every public page. */
+.page,
+.page h1,
+.page h2,
+.page h3,
+.page h4,
+.page h5,
+.page h6,
+.page p,
+.page a,
+.page span,
+.page li,
+.page button,
+.page input,
+.page textarea,
+.page select {
+  font-family: var(--site-font);
+}
+
+/* Preserve intentional monospace typography inside code content. */
+.page code,
+.page pre,
+.page pre * {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+/* Homepage navigation typography is the canonical navigation style. */
+.page .nav-links,
+.page .nav-links li,
+.page .nav-links a,
+.page .nav-cta,
+.page .logo {
+  font-family: var(--site-font) !important;
+}
+
+.page .nav-links a {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 1.4;
+  letter-spacing: 0 !important;
+}
+
+.page .nav-cta {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  line-height: 1.4;
+  letter-spacing: 0 !important;
+}
