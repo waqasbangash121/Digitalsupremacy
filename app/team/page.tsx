@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./page.css";
-import { getTeamMembers } from "@/lib/db";
+import "./social.css";
+import { getTeamMembers, type TeamMember } from "@/lib/db";
 
 export const metadata: Metadata = {
   title: "Our Team — Digital Supremacy",
@@ -8,6 +9,33 @@ export const metadata: Metadata = {
 };
 
 export const dynamic = "force-dynamic";
+
+const socialLabels = {
+  linkedin_url: "LinkedIn",
+  instagram_url: "Instagram",
+  twitter_url: "Twitter / X",
+  facebook_url: "Facebook",
+} as const;
+
+type SocialKey = keyof typeof socialLabels;
+
+function MemberSocialLinks({ member, compact = false }: { member: TeamMember; compact?: boolean }) {
+  const links = (Object.keys(socialLabels) as SocialKey[])
+    .map((key) => ({ key, label: socialLabels[key], url: member[key] }))
+    .filter((link) => Boolean(link.url));
+
+  if (links.length === 0) return null;
+
+  return (
+    <div className={`member-socials${compact ? " compact" : ""}`} aria-label={`${member.name} social profiles`}>
+      {links.map((link) => (
+        <a key={link.key} href={link.url} target="_blank" rel="noopener noreferrer" aria-label={`${member.name} on ${link.label}`} title={link.label}>
+          <span aria-hidden="true">{link.label === "LinkedIn" ? "in" : link.label === "Instagram" ? "ig" : link.label === "Facebook" ? "f" : "x"}</span>
+        </a>
+      ))}
+    </div>
+  );
+}
 
 export default async function TeamPage() {
   const members = await getTeamMembers();
@@ -42,28 +70,32 @@ export default async function TeamPage() {
         <div className="container">
           <section className="team-section">
             {founder && <article className="founder-card">
-              <div className={"founder-avatar " + (founder.image_url ? "has-image" : "")} aria-hidden="true">
-                {founder.image_url ? <img src={founder.image_url} alt="" /> : founder.initials}
+              <div className={"founder-avatar " + (founder.image_url ? "has-image" : "")}>
+                {founder.image_url ? <img src={founder.image_url} alt={`${founder.name}, ${founder.role}`} /> : founder.initials}
               </div>
               <div className="founder-info">
                 <div className="founder-tag">Founder</div>
                 <h2 className="founder-name">{founder.name}</h2>
                 <div className="founder-role">{founder.role}</div>
                 {founder.bio && <p className="founder-bio">{founder.bio}</p>}
+                <MemberSocialLinks member={founder} />
               </div>
             </article>}
 
             <div className="team-grid">
               {team.map((member, index) => (
-                <article className="team-card" key={member.name}>
-                  <div className={"team-avatar av-" + member.tone + (member.image_url ? " has-image" : "")} aria-hidden="true">
-                    {member.image_url ? <img src={member.image_url} alt="" /> : <span>{member.initials}</span>}
+                <article className="team-card" key={member.id}>
+                  <div className={"team-avatar av-" + member.tone + (member.image_url ? " has-image" : "")}>
+                    {member.image_url ? <img src={member.image_url} alt={`${member.name}, ${member.role}`} /> : <span>{member.initials}</span>}
                     <small>{String(index + 1).padStart(2, "0")}</small>
                   </div>
                   <div className="team-card-info">
-                    <h2 className="team-card-name">{member.name}</h2>
-                    <div className="team-card-role">{member.role}</div>
-                    <span className="team-card-tag">{member.tag}</span>
+                    <div className="team-card-copy">
+                      <h2 className="team-card-name">{member.name}</h2>
+                      <div className="team-card-role">{member.role}</div>
+                      <span className="team-card-tag">{member.tag}</span>
+                    </div>
+                    <MemberSocialLinks member={member} compact />
                   </div>
                 </article>
               ))}
