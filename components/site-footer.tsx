@@ -4,10 +4,13 @@ import "./site-footer.css";
 export default async function SiteFooter() {
   const settings = await getSiteSettings();
   const socialLinks = [
-    ["LinkedIn", settings.linkedin_url],
-    ["Instagram", settings.instagram_url],
-    ["YouTube", settings.youtube_url],
-  ].filter(([, url]) => Boolean(url));
+    ["LinkedIn", settings.linkedin_url, settings.linkedin_enabled],
+    ["Instagram", settings.instagram_url, settings.instagram_enabled],
+    ["YouTube", settings.youtube_url, settings.youtube_enabled],
+    ["Facebook", settings.facebook_url, settings.facebook_enabled],
+    ["X / Twitter", settings.twitter_url, settings.twitter_enabled],
+    ["TikTok", settings.tiktok_url, settings.tiktok_enabled],
+  ].filter(([, url, enabled]) => Boolean(url) && Boolean(enabled));
 
   return (
     <footer className="footer-wrap">
@@ -58,7 +61,7 @@ export default async function SiteFooter() {
           <div>
             <div className="footer-col-title">Social</div>
             <ul className="footer-col-links">
-              {socialLinks.map(([label, url]) => <li key={label}><a href={url} target="_blank" rel="noreferrer">{label}</a></li>)}
+              {socialLinks.map(([label, url]) => <li key={String(label)}><a href={String(url)} target="_blank" rel="noreferrer">{label}</a></li>)}
             </ul>
           </div>
         </div>
