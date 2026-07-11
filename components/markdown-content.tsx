@@ -5,7 +5,7 @@ function sanitizeRichText(html: string) {
     .replace(/<\/?(?:script|style|iframe|object|embed|form|input|button|meta|link)[^>]*>/gi, "")
     .replace(/\son\w+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, "")
     .replace(/\sstyle\s*=\s*(?:"[^"]*"|'[^']*')/gi, "")
-    .replace(/(?:href|src)\s*=\s*(["'])\s*javascript:[^"']*\1/gi, '$1#$1');
+    .replace(/\s(href|src)\s*=\s*(["'])\s*javascript:[^"']*\2/gi, ' $1="#"');
 }
 
 function inline(text: string): ReactNode[] {
