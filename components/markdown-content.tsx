@@ -1,5 +1,13 @@
 import type { ReactNode } from "react";
 
+function sanitizeRichText(html: string) {
+  return html
+    .replace(/<\/?(?:script|style|iframe|object|embed|form|input|button|meta|link)[^>]*>/gi, "")
+    .replace(/\son\w+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, "")
+    .replace(/\sstyle\s*=\s*(?:"[^"]*"|'[^']*')/gi, "")
+    .replace(/(?:href|src)\s*=\s*(["'])\s*javascript:[^"']*\1/gi, '$1#$1');
+}
+
 function inline(text: string): ReactNode[] {
   const tokens = text.split(/(!?\[[^\]]*\]\([^\s)]+\)|\*\*[^*]+\*\*|`[^`]+`)/g);
   return tokens.map((token, index) => {
@@ -13,7 +21,7 @@ function inline(text: string): ReactNode[] {
   });
 }
 
-export default function MarkdownContent({ content }: { content: string }) {
+function MarkdownFallback({ content }: { content: string }) {
   const lines = content.replace(/\r/g, "").split("\n");
   const nodes: ReactNode[] = [];
   let list: string[] = [];
@@ -25,19 +33,13 @@ export default function MarkdownContent({ content }: { content: string }) {
     nodes.push(<ul key={`list-${nodes.length}`}>{list.map((item, index) => <li key={index}>{inline(item)}</li>)}</ul>);
     list = [];
   };
-
   const flushCode = () => {
     nodes.push(<pre key={`code-${nodes.length}`}><code>{code.join("\n")}</code></pre>);
     code = [];
   };
 
   lines.forEach((line) => {
-    if (line.trim().startsWith("```")) {
-      flushList();
-      if (inCode) flushCode();
-      inCode = !inCode;
-      return;
-    }
+    if (line.trim().startsWith("```")) { flushList(); if (inCode) flushCode(); inCode = !inCode; return; }
     if (inCode) { code.push(line); return; }
     if (/^[-*]\s+/.test(line)) { list.push(line.replace(/^[-*]\s+/, "")); return; }
     flushList();
@@ -52,5 +54,14 @@ export default function MarkdownContent({ content }: { content: string }) {
 
   flushList();
   if (inCode && code.length) flushCode();
-  return <div className="markdown-content">{nodes}</div>;
+  return <>{nodes}</>;
+}
+
+export default function MarkdownContent({ content }: { content: string }) {
+  const isRichText = /^\s*</.test(content);
+  return (
+    <div className="markdown-content rich-article-content">
+      {isRichText ? <div dangerouslySetInnerHTML={{ __html: sanitizeRichText(content) }} /> : <MarkdownFallback content={content} />}
+    </div>
+  );
 }
