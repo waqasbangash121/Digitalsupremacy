@@ -2,9 +2,7 @@
   "name": "digital-supremacy",
   "version": "1.0.0",
   "private": true,
-  "engines": {
-    "node": ">=20.9.0"
-  },
+  "engines": { "node": ">=20.9.0" },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,6 +10,7 @@
     "lint": "eslint .",
     "check": "npm run lint && npm run build",
     "db:init": "node scripts/init-admin-db.mjs",
+    "db:migrate-case-study-images": "node scripts/migrate-legacy-case-study-images.mjs",
     "externalize:css": "node scripts/externalize-page-css.mjs",
     "migrate:legacy": "node scripts/convert-html-to-tsx.mjs && node scripts/apply-case-studies-brief.mjs && node scripts/normalize-generated-jsx.mjs && npm run externalize:css"
   },
