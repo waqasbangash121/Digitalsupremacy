@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getCaseStudyBySlug } from "@/lib/db";
 import CaseStudyView from "../case-study-view";
 import "../page.css";
+import "../database-case-studies.css";
 
 export const dynamic = "force-dynamic";
 
