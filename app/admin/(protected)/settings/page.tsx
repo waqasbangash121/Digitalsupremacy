@@ -1,5 +1,6 @@
 import { getSiteSettings } from "@/lib/site-settings";
 import { saveSiteSettingsAction } from "./actions";
+import ChannelToggle from "./channel-toggle";
 import "./settings.css";
 
 export const dynamic = "force-dynamic";
@@ -31,13 +32,13 @@ export default async function AdminSettingsPage() {
       <section className="admin-settings-summary">
         <article><span>Connected channels</span><strong>{enabledCount}</strong><p>Currently enabled in the footer.</p></article>
         <article><span>Available channels</span><strong>{channels.length}</strong><p>Supported social platforms.</p></article>
-        <article><span>Display rule</span><strong>Enabled + URL</strong><p>Both are required for a link to appear.</p></article>
+        <article><span>Display rule</span><strong>On + URL</strong><p>Both are required for a link to appear.</p></article>
       </section>
 
       <form action={saveSiteSettingsAction} className="admin-settings-form">
         <div className="admin-settings-toolbar">
           <div><p>Footer settings</p><h2>Social media channels</h2></div>
-          <button className="admin-primary" type="submit"><span>Save settings</span><i aria-hidden="true">→</i></button>
+          <span className="admin-settings-help">Switches save instantly. Use Save settings after changing URLs.</span>
         </div>
 
         <div className="admin-channel-grid">
@@ -52,11 +53,7 @@ export default async function AdminSettingsPage() {
                 <div className="admin-channel-card-head">
                   <div className={`admin-channel-icon ${channel.key}`}>{channel.initials}</div>
                   <div className="admin-channel-title"><h3>{channel.label}</h3><p>{channel.description}</p></div>
-                  <label className="admin-switch">
-                    <input type="checkbox" name={enabledName} defaultChecked={settings[enabledKey]} />
-                    <span className="admin-switch-track"><span /></span>
-                    <em>Enable</em>
-                  </label>
+                  <ChannelToggle name={enabledName} defaultChecked={settings[enabledKey]} />
                 </div>
                 <div className="admin-channel-url">
                   <label htmlFor={`${channel.key}-url`}>Profile URL</label>
