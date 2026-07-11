@@ -17,8 +17,9 @@ export default function ChannelToggle({ name, defaultChecked }: ChannelTogglePro
         name={name}
         checked={checked}
         onChange={(event) => {
+          const form = event.currentTarget.form;
           setChecked(event.currentTarget.checked);
-          requestAnimationFrame(() => event.currentTarget.form?.requestSubmit());
+          requestAnimationFrame(() => form?.requestSubmit());
         }}
       />
       <span className="admin-switch-track"><span /></span>
