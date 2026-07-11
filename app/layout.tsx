@@ -5,7 +5,10 @@ import NavigationSync from "@/components/navigation-sync";
 
 import "./globals.css";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://yourdigitalsupremacy.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Digital Supremacy — Email Marketing for DTC Brands",
   description:
     "Retention marketing for DTC ecommerce brands. Digital Supremacy builds email systems that turn traffic, subscribers, and customers into consistent revenue.",
