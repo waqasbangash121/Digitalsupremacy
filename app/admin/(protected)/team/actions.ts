@@ -4,7 +4,7 @@ import { randomUUID } from "node:crypto";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireAdmin } from "@/lib/auth";
-import { ensureSchema, sql } from "@/lib/db";
+import { sql } from "@/lib/db";
 
 function memberData(formData: FormData) {
   const name = String(formData.get("name") ?? "").trim();
@@ -31,7 +31,6 @@ function refreshTeam() {
 
 export async function createMemberAction(formData: FormData) {
   await requireAdmin();
-  await ensureSchema();
   const member = memberData(formData);
   await sql`
     insert into team_members (id, name, initials, role, tag, bio, tone, image_url, sort_order, is_founder, is_active)
@@ -43,7 +42,6 @@ export async function createMemberAction(formData: FormData) {
 
 export async function updateMemberAction(formData: FormData) {
   await requireAdmin();
-  await ensureSchema();
   const id = String(formData.get("id") ?? "");
   const member = memberData(formData);
   await sql`
@@ -60,7 +58,6 @@ export async function updateMemberAction(formData: FormData) {
 
 export async function toggleMemberAction(formData: FormData) {
   await requireAdmin();
-  await ensureSchema();
   const id = String(formData.get("id") ?? "");
   await sql`update team_members set is_active = not is_active, updated_at = now() where id = ${id}`;
   refreshTeam();
@@ -68,7 +65,6 @@ export async function toggleMemberAction(formData: FormData) {
 
 export async function deleteMemberAction(formData: FormData) {
   await requireAdmin();
-  await ensureSchema();
   const id = String(formData.get("id") ?? "");
   await sql`delete from team_members where id = ${id}`;
   refreshTeam();
