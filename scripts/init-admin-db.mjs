@@ -1,6 +1,44 @@
+import { existsSync, readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import postgres from "postgres";
 
-if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL is not configured");
+function loadEnvFile(filename) {
+  const filepath = resolve(process.cwd(), filename);
+  if (!existsSync(filepath)) return;
+
+  for (const line of readFileSync(filepath, "utf8").split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) continue;
+
+    const match = trimmed.match(/^(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)$/);
+    if (!match) continue;
+
+    const [, key, rawValue] = match;
+    if (process.env[key] !== undefined) continue;
+
+    let value = rawValue.trim();
+    if (
+      (value.startsWith('"') && value.endsWith('"')) ||
+      (value.startsWith("'") && value.endsWith("'"))
+    ) {
+      value = value.slice(1, -1);
+    } else {
+      value = value.replace(/\s+#.*$/, "").trim();
+    }
+
+    process.env[key] = value.replace(/\\n/g, "\n");
+  }
+}
+
+loadEnvFile(".env.local");
+loadEnvFile(".env");
+
+if (!process.env.DATABASE_URL) {
+  throw new Error(
+    "DATABASE_URL is not configured. Add it to .env.local or export it before running pnpm db:init.",
+  );
+}
+
 const sql = postgres(process.env.DATABASE_URL, { prepare: false, max: 1 });
 const members = [
   ["addy", "Addy", "AD", "Founder, Digital Supremacy", "Founder", "Leads strategy and sets the standard for every client relationship — built on results, not promises. Hands-on with every account from day one.", "founder", 0, true],
