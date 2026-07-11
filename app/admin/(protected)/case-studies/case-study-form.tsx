@@ -7,7 +7,7 @@ export default function CaseStudyForm({ action, caseStudy, submitLabel }: Props)
   const phases = caseStudy?.phases ?? [];
   const images = caseStudy?.images ?? [];
   return (
-    <form action={action} className="admin-card admin-case-form" encType="multipart/form-data">
+    <form action={action} className="admin-card admin-case-form">
       {caseStudy && <input type="hidden" name="id" value={caseStudy.id} />}
       <input type="hidden" name="existingCoverImage" value={caseStudy?.cover_image_url ?? ""} />
       {images.map((image, index) => <input key={index} type="hidden" name={`existingImage${index + 1}`} value={image.url} />)}
