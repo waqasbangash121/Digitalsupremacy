@@ -3,6 +3,7 @@ import { requireAdmin } from "@/lib/auth";
 import { logoutAction } from "../actions";
 import AdminNav from "./admin-nav";
 import "../admin.css";
+import "../admin-nav.css";
 
 export const dynamic = "force-dynamic";
 
