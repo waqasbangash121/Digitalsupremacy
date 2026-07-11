@@ -22,6 +22,22 @@ export default function SiteInteractions() {
       .map((link) => document.querySelector<HTMLElement>(link.hash))
       .filter((section): section is HTMLElement => section !== null);
 
+    if (window.location.pathname === "/") {
+      const navLinks = document.querySelector<HTMLUListElement>(".page--home .nav-links");
+      const hasTemplatesLink = navLinks?.querySelector<HTMLAnchorElement>('a[href="/templates"]');
+
+      if (navLinks && !hasTemplatesLink) {
+        const templatesItem = document.createElement("li");
+        const templatesLink = document.createElement("a");
+        templatesLink.href = "/templates";
+        templatesLink.textContent = "Templates";
+        templatesItem.appendChild(templatesLink);
+
+        const whyUsItem = navLinks.querySelector<HTMLAnchorElement>('a[href="/why-us"]')?.parentElement;
+        navLinks.insertBefore(templatesItem, whyUsItem ?? null);
+      }
+    }
+
     let currentReview = 0;
     let reviewTimer: number | undefined;
     let activePolicySection = "";
@@ -69,7 +85,6 @@ export default function SiteInteractions() {
 
     const goToReview = (nextReview: number) => {
       if (!reviewTrack || reviewDots.length === 0) return;
-
       currentReview = ((nextReview % reviewDots.length) + reviewDots.length) % reviewDots.length;
       reviewTrack.style.transform = "translateX(-" + currentReview * 100 + "%)";
       reviewDots.forEach((dot, index) => dot.classList.toggle("active", index === currentReview));
