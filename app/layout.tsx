@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import FooterSocialSync from "@/components/footer-social-sync";
+import NavigationSync from "@/components/navigation-sync";
 
 import "./globals.css";
 
@@ -27,6 +28,7 @@ export default function RootLayout({
       </head>
       <body>
         {children}
+        <NavigationSync />
         <FooterSocialSync />
         <Analytics />
       </body>
