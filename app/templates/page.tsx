@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import SiteFooter from "@/components/site-footer";
 import { getTemplates } from "@/lib/templates-db";
 import "./page.css";
 
@@ -61,6 +62,7 @@ export default async function TemplatesPage() {
 
         <section className="templates-cta container"><div><p>Need something custom?</p><h2>We can build a template system around your brand, products, and campaign calendar.</h2></div><a href="https://calendly.com/addyawan57/15min" target="_blank" rel="noreferrer">Book a call</a></section>
       </main>
+      <SiteFooter />
     </div>
   );
 }
