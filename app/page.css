@@ -195,7 +195,6 @@
 .page--home .brands-section {
   padding: 48px 0;
   border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
   background: #0D0D0F;
 }
 
@@ -684,12 +683,11 @@
 }
 
 /* FOOTER */
-.page--home .footer-wrap { border-top: 1px solid var(--border); }
+.page--home .footer-wrap { }
 
 /* CTA BAND */
 .page--home .footer-cta {
   padding: 72px 0;
-  border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: space-between;
