@@ -8,7 +8,7 @@ type Props = {
 
 export default function TemplateForm({ action, template, submitLabel }: Props) {
   return (
-    <form action={action} className="admin-card admin-template-form" encType="multipart/form-data">
+    <form action={action} className="admin-card admin-template-form">
       {template && <input type="hidden" name="id" value={template.id} />}
       <input type="hidden" name="existingImage" value={template?.image_url ?? ""} />
 
