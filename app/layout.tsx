@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 import FooterSocialSync from "@/components/footer-social-sync";
 import MobileBottomNav from "@/components/mobile-bottom-nav";
 import NavigationSync from "@/components/navigation-sync";
@@ -36,6 +37,18 @@ export default function RootLayout({
         <FooterSocialSync />
         <MobileBottomNav />
         <Analytics />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-XF72L4DM0W"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XF72L4DM0W');
+          `}
+        </Script>
       </body>
     </html>
   );
