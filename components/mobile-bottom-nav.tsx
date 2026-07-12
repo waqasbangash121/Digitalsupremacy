@@ -24,7 +24,11 @@ export default function MobileBottomNav() {
   const pathname = usePathname();
   const [moreOpen, setMoreOpen] = useState(false);
 
-  useEffect(() => setMoreOpen(false), [pathname]);
+  useEffect(() => {
+    setMoreOpen(false);
+    document.body.classList.toggle("admin-route", pathname.startsWith("/admin"));
+    return () => document.body.classList.remove("admin-route");
+  }, [pathname]);
 
   if (pathname.startsWith("/admin")) return null;
 

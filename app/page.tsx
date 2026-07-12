@@ -584,11 +584,7 @@ export default function Page() {
                     what we'd fix first.
                   </p>
                 </div>
-                <a
-                  className="btn-primary"
-                  href="https://calendly.com/addyawan57/15min"
-                  target="_blank"
-                >
+                <a className="btn-primary" href="#calendly">
                   Schedule a Meeting
                 </a>
               </div>

@@ -120,7 +120,7 @@ export default function Page() {
       <h2>Ready to make email a <span className="accent">real</span> part of your revenue?</h2>
       <p>Book a free 15-minute call. We'll look at your setup and tell you exactly what we'd fix first — no pitch, no fluff.</p>
       <div className="cta-btns">
-        <a className="btn-primary" href="https://calendly.com/addyawan57/15min" target="_blank">Book a Call</a>
+        <a className="btn-primary" href="#calendly">Book a Call</a>
         <a className="btn-secondary" href="/case-studies">See the results</a>
       </div>
     </div>
