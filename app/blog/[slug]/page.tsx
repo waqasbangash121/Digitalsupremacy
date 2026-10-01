@@ -1,3 +1,4 @@
+import ServicesDropdown from "@/components/services-dropdown";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import SiteFooter from "@/components/site-footer";
@@ -71,7 +72,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <div className="page page--blog page--blog-post">
-      <div className="nav-wrap"><nav className="nav"><a href="/" className="logo"><img src="/image/logo.png" alt="Digital Supremacy" className="logo-img" /></a><ul className="nav-links"><li><a href="/services">Services</a></li><li><a href="/case-studies">Case Studies</a></li><li><a href="/templates">Templates</a></li><li><a href="/blog" className="active">Blog</a></li><li><a href="/why-us">Why Us</a></li><li><a href="/team">Our Team</a></li></ul><a className="nav-cta" href="https://calendly.com/addyawan57/15min" target="_blank" rel="noreferrer">Book a Call</a></nav></div>
+      <div className="nav-wrap"><nav className="nav"><a href="/" className="logo"><img src="/image/logo.png" alt="Digital Supremacy" className="logo-img" /></a><ul className="nav-links"><li><ServicesDropdown /></li><li><a href="/case-studies">Case Studies</a></li><li><a href="/templates">Templates</a></li><li><a href="/#reviews">Reviews</a></li><li><a href="/why-us">Why Us</a></li><li><a href="/team">Our Team</a></li></ul><a className="nav-cta" href="https://calendly.com/addyawan57/15min" target="_blank" rel="noreferrer">Book a Call</a></nav></div>
       <main>
         <article>
           <header className="blog-post-hero container"><a className="blog-back" href="/blog">← All articles</a><div className="blog-post-meta"><span>{post.category}</span><span>{formatDate(post.published_at)}</span><span>{post.author_name}</span></div><h1>{post.title}</h1><p>{post.excerpt}</p>{post.tags.length > 0 && <div className="blog-tags">{post.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>}</header>

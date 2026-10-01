@@ -1,0 +1,180 @@
+/* Public design system. Extra scope keeps legacy page styles from taking precedence. */
+.page.page {
+  --home-max: 1280px;
+  --why-max: 1280px;
+  --case-max: 1280px;
+  --design-rule: rgba(255, 255, 255, .12);
+  --section-space: clamp(72px, 8vw, 116px);
+}
+
+.page.page:is(.page--home, .page--why-us, .page--services, .page--team, .page--case-studies) :is(.container, .nav),
+.page.page .footer-wrap .container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 4vw, 56px);
+}
+
+.page.page:is(.page--blog, .page--templates) .nav,
+.page.page--blog:not(.page--blog-post) .container,
+.page.page--templates .container {
+  width: min(1168px, calc(100% - clamp(40px, 8vw, 112px)));
+}
+
+.page.page :is(h1, h2, h3) { text-wrap: balance; }
+.page.page :is(.hero h1, .page-hero h1) { letter-spacing: -.045em; font-weight: 600; }
+.page.page :is(.hero::after, .page-hero::after, .blog-hero::after) { display: none; }
+.page.page :is(.btn-primary, .nav-cta, .footer-cta-btn) { box-shadow: none; letter-spacing: 0; }
+.page.page :is(a, button):focus-visible { outline: 2px solid #ef6a73; outline-offset: 5px; }
+
+/* Give the homepage distinct rhythms: evidence, project features, then open copy. */
+.page.page--home .hero { min-height: 620px; padding-block: clamp(80px, 9vw, 132px); }
+.page.page--home .hero h1 { max-width: 940px; }
+.page.page--home .section { padding-block: var(--section-space); }
+.page.page--home .section > h2 { font-weight: 500; letter-spacing: -.035em; }
+.page.page--home :is(.stats-grid, .mission-cards) { gap: 40px; border: 0; background: transparent; }
+.page.page--home :is(.stat, .mc) {
+  min-height: 0;
+  padding: 28px 0 0;
+  border: 0;
+  border-top: 1px solid var(--design-rule);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.page.page--home .stat::before { display: none; }
+.page.page--home .stat-num { font-weight: 500; letter-spacing: -.045em; }
+.page.page--home .mc-red :is(.mc-tag, .mc-val) { color: var(--text); }
+.page.page--home .mc-red .mc-desc { color: var(--text-muted); }
+.page.page--home .bullets-grid { gap: 32px; border: 0; }
+.page.page--home .bullet-card {
+  min-height: 0;
+  padding: 24px 0 0;
+  border: 0;
+  border-top: 1px solid var(--design-rule);
+  border-radius: 0;
+  background: transparent;
+}
+.page.page--home .bullet-card:last-child { border-top: 1px solid var(--design-rule); }
+.page.page--home .bullet-title { min-height: 0; }
+.page.page--home #cases .case-card {
+  min-height: 0;
+  padding-block: 44px;
+  margin-bottom: 0;
+  gap: 48px;
+  border: 0;
+  border-top: 1px solid var(--design-rule);
+  border-radius: 0;
+  background: transparent;
+}
+.page.page--home .case-top { padding: 0; }
+.page.page--home #cases .case-img { width: 100%; margin: 0; border: 0; border-radius: 4px; }
+.page.page--home .why-grid { gap: 0 56px; }
+.page.page--home .why-item {
+  padding: 30px 0;
+  min-height: 0;
+  border: 0;
+  border-top: 1px solid var(--design-rule);
+  border-radius: 0;
+  background: transparent;
+}
+.page.page--home .why-dot { margin-bottom: 22px; }
+.page.page--home .mission-stamp { padding: 0; border: 0; border-radius: 0; background: transparent; }
+.page.page--home .step-num { background: transparent; border: 0; color: var(--red); font-weight: 500; }
+.page.page--home .ttag { padding: 0; border: 0; background: transparent; }
+.page.page--home .trust-tags { gap: 12px 28px; }
+.page.page--home .cal-box { border: 0; border-radius: 0; background: transparent; }
+.page.page--home .cal-header { padding: 0; min-height: 0; border: 0; gap: 40px; }
+.page.page--home .cal-title { font-size: clamp(32px, 4vw, 48px); font-weight: 500; letter-spacing: -.035em; }
+
+/* Benefits read as an editorial list instead of a wall of tiles. */
+.page.page--why-us .why-section { background: transparent; box-shadow: none; }
+.page.page--why-us .why-grid { gap: 0 56px; }
+.page.page--why-us .why-card {
+  min-height: 0;
+  padding: 32px 0;
+  border: 0;
+  border-top: 1px solid var(--design-rule);
+  border-radius: 0;
+  background: transparent;
+  color: var(--text);
+  box-shadow: none;
+  transform: none;
+}
+.page.page--why-us .why-card::before { display: none; }
+.page.page--why-us .why-card:hover { background: transparent; transform: none; border-color: var(--design-rule); }
+.page.page--why-us .why-card-num { margin: 0 0 24px; }
+.page.page--why-us .why-card h3 { color: var(--text); }
+.page.page--why-us .why-card p { color: var(--text-muted); }
+.page.page--why-us .copy-inner .statement { padding: 8px 0 8px 24px; border-radius: 0; background: transparent; }
+.page.page--why-us .cta-section {
+  margin-block: 0;
+  padding: var(--section-space) 0;
+  border: 0;
+  border-top: 1px solid var(--design-rule);
+  border-radius: 0;
+  background: transparent;
+}
+.page.page--why-us .cta-section::before { display: none; }
+
+/* Library entries keep their imagery; their text sits directly on the page. */
+.page.page :is(.blog-card, .template-card) {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+.page.page :is(.blog-card:hover, .template-card:hover) { background: transparent; box-shadow: none; transform: none; }
+.page.page :is(.blog-card-copy, .template-card-content) { padding: 24px 0 0; }
+.page.page :is(.blog-grid, .templates-grid) { gap: 48px 32px; }
+.page.page :is(.blog-featured-media, .blog-card-media, .template-image) { border: 0; border-radius: 4px; }
+.page.page--templates .template-card { min-height: 0; overflow: visible; }
+.page.page--templates .template-card-link { position: relative; inset: auto; }
+.page.page--templates .template-card-link::after { display: none; }
+.page.page--templates .template-image { position: relative; inset: auto; height: 420px; }
+.page.page--templates .template-card-content { position: relative; inset: auto; background: transparent; }
+.page.page--templates .template-card :is(h2, p) { text-shadow: none; }
+.page.page--templates .template-card p { color: #a1a1a6; }
+.page.page :is(.templates-cta::after, .cta-band::before) { display: none; }
+.page.page :is(.blog-post-cta, .templates-cta, .cta-band) {
+  border: 0;
+  border-top: 1px solid var(--design-rule);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: clamp(48px, 6vw, 80px) 0;
+}
+.page.page.page--case-studies :is(.result-card, .diff-block, .cs-closing) {
+  border: 0;
+  border-top: 1px solid var(--design-rule);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 24px 0;
+}
+.page.page.page--case-studies .results-grid { gap: 32px; }
+
+@media (max-width: 900px) {
+  .page.page--home #cases .case-card { gap: 28px; }
+  .page.page--home :is(.stats-grid, .mission-cards) { gap: 28px; }
+}
+
+@media (max-width: 600px) {
+  .page.page--home .hero { min-height: 0; padding-block: 72px; }
+  .page.page--home :is(.bullets-grid, .why-grid),
+  .page.page--why-us .why-grid { grid-template-columns: 1fr; }
+  .page.page--home .bullet-card:nth-child(n) { border: 0; border-top: 1px solid var(--design-rule); }
+  .page.page--home .cal-header { grid-template-columns: 1fr; gap: 28px; }
+  .page.page--home .cal-header .btn-primary { justify-self: start; }
+  .page.page--why-us .why-card { padding-block: 28px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page.page *, .page.page *::before, .page.page *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .page.page .fade-up { opacity: 1; transform: none; }
+}

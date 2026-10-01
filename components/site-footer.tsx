@@ -32,13 +32,13 @@ export default async function SiteFooter() {
           <div>
             <div className="footer-col-title">Services</div>
             <ul className="footer-col-links">
-              <li><a href="/services#strategy">Email Strategy</a></li>
-              <li><a href="/services#flows">Flows</a></li>
-              <li><a href="/services#campaigns">Campaigns</a></li>
-              <li><a href="/services#deliverability">Deliverability</a></li>
-              <li><a href="/services#leadgen">Lead Generation</a></li>
+              <li><a href="/services/email-marketing#strategy">Email Strategy</a></li>
+              <li><a href="/services/email-marketing#flows">Flows</a></li>
+              <li><a href="/services/email-marketing#campaigns">Campaigns</a></li>
+              <li><a href="/services/email-marketing#deliverability">Deliverability</a></li>
+              <li><a href="/services/email-marketing#leadgen">Lead Generation</a></li>
               <li><a href="/services#shopify">Shopify Management</a></li>
-              <li><a href="/services#platform">Platform Management</a></li>
+              <li><a href="/services/email-marketing#platform">Platform Management</a></li>
             </ul>
           </div>
           <div>

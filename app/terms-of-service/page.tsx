@@ -1,3 +1,4 @@
+import ServicesDropdown from "@/components/services-dropdown";
 import type { Metadata } from "next";
 import "./page.css";
 import "../legal-pages.css";
@@ -22,7 +23,7 @@ export default function Page() {
     <img src="image/logo.png" alt="Digital Supremacy Logo" className="logo-img" />
 </a>
             <ul className="nav-links">
-      <li><a href="/services">Services</a></li>
+      <li><ServicesDropdown /></li>
       <li><a href="/case-studies">Case Studies</a></li>
       <li><a href="/why-us">Why Us</a></li>
       <li><a href="/team">Our Team</a></li>
@@ -202,13 +203,13 @@ export default function Page() {
       <div>
         <div className="footer-col-title">Services</div>
         <ul className="footer-col-links">
-          <li><a href="/services#strategy">Email Strategy</a></li>
-          <li><a href="/services#flows">Flows</a></li>
-          <li><a href="/services#campaigns">Campaigns</a></li>
-          <li><a href="/services#deliverability">Deliverability</a></li>
-          <li><a href="/services#leadgen">Lead Generation</a></li>
-          <li><a href="/services#shopify">Shopify Management</a></li>
-          <li><a href="/services#platform">Platform Management</a></li>
+          <li><a href="/services/email-marketing#strategy">Email Strategy</a></li>
+          <li><a href="/services/email-marketing#flows">Flows</a></li>
+          <li><a href="/services/email-marketing#campaigns">Campaigns</a></li>
+          <li><a href="/services/email-marketing#deliverability">Deliverability</a></li>
+          <li><a href="/services/email-marketing#leadgen">Lead Generation</a></li>
+          <li><a href="/services/shopify-management#shopify">Shopify Management</a></li>
+          <li><a href="/services/email-marketing#platform">Platform Management</a></li>
         </ul>
       </div>
 

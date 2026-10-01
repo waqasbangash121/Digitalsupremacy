@@ -1,3 +1,4 @@
+import ServicesDropdown from "@/components/services-dropdown";
 import type { Metadata } from "next";
 import "./page.css";
 
@@ -24,7 +25,7 @@ export default function Page() {
             </div>
             <ul className="nav-links">
               <li>
-                <a href="/services">Services</a>
+                <ServicesDropdown />
               </li>
               <li>
                 <a href="/case-studies">Case Studies</a>
@@ -460,8 +461,8 @@ export default function Page() {
         </div>
 
         <div className="container">
-          <section className="section">
-            <div
+          <section className="section" id="reviews">
+            <div className="reviews-heading"
               style={{
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr",
@@ -492,55 +493,57 @@ export default function Page() {
 
             <div className="review-slider-outer">
               <div className="review-track" id="reviewTrack">
-                <div className="review-card">
+                <div className="review-card active">
                   <div>
-                    <div className="stars">★★★★★</div>
-                    <p className="review-text">
-                      "Working with Addy was nothing short of amazing! She came
-                      on board and things were already moving quickly. She met
-                      all of our deadlines and allowed my team to launch a
-                      successful online business. Communication was superb —
-                      when we needed changes, she was polite, understanding and
-                      effective. Highly recommend!"
-                    </p>
+                    <p className="review-text">Working with Addy was nothing short of amazing. She met every deadline, helped us launch successfully, and made the process easy.</p>
                   </div>
                   <div className="review-author">
-                    <img className="r-avatar r-photo" src="/reviews/eric-jamal.png" alt="Eric Jamal" />
+                    <div className="review-video-frame"><iframe className="r-avatar r-video" src="https://drive.google.com/file/d/1cLaWG5lMmaXwe7TfF9QewGtIGnoNQX4I/preview" title="Eric Jamal video review" allow="fullscreen" allowFullScreen /></div>
                     <div className="r-name">Eric Jamal</div>
-                    <div className="r-biz">Godit</div>
+                    <div className="r-biz">Musician & Founder, Godit</div>
                   </div>
                 </div>
                 <div className="review-card">
                   <div>
-                    <div className="stars">★★★★★</div>
-                    <p className="review-text">
-                      "So glad to have found Addy! She's made my life so much
-                      easier handling our email marketing and collaborating on
-                      pushing our email performance to its max potential. Highly
-                      recommend her!"
-                    </p>
+                    <p className="review-text">Addy has made my life easier by handling our email marketing and helping us improve performance.</p>
                   </div>
                   <div className="review-author">
-                    <img className="r-avatar r-photo" src="/reviews/ruma.png" alt="Ruma" />
+                    <div className="review-video-frame"><iframe className="r-avatar r-video" src="https://drive.google.com/file/d/1XfUWRcoJqsyUkznFiszGyukQvj4EYweT/preview" title="Ruma video review" allow="fullscreen" allowFullScreen /></div>
                     <div className="r-name">Ruma</div>
-                    <div className="r-biz">á La Couture</div>
+                    <div className="r-biz">Founder & CEO, á La Couture</div>
                   </div>
                 </div>
                 <div className="review-card">
                   <div>
                     <div className="stars">★★★★★</div>
-                    <p className="review-text">
-                      "I've been working with Addy and her team for about six
-                      months. My sales increased significantly from the start
-                      and have been performing consistently ever since. They
-                      have my brand's language down to a T — they speak to my
-                      customers as if they were looking through my own eyes."
-                    </p>
+                    <p className="review-text">Video testimonial from Sarah Buxton.</p>
                   </div>
                   <div className="review-author">
-                    <img className="r-avatar r-photo" src="/reviews/robert.png" alt="Robert" />
-                    <div className="r-name">Robert</div>
-                    <div className="r-biz">Mowe Clothing</div>
+                    <div className="review-video-frame"><iframe className="r-avatar r-video" src="https://drive.google.com/file/d/1JdgrPjQEuilJElxCf4WEaP6JKhmNOlDa/preview" title="Sarah Buxton video review" allow="fullscreen" allowFullScreen /></div>
+                    <div className="r-name">Sarah Buxton</div>
+                    <div className="r-biz">Founder & Creative Director, Tutublue</div>
+                  </div>
+                </div>
+                <div className="review-card">
+                  <div>
+                    <div className="stars">★★★★★</div>
+                    <p className="review-text">Video testimonial from Kirsten Schroeder.</p>
+                  </div>
+                  <div className="review-author">
+                    <div className="review-video-frame"><iframe className="r-avatar r-video" src="https://drive.google.com/file/d/1ytCyH_FaCPSwhD8_bn_Zg-8Bfa-fVe9z/preview" title="Kirsten Schroeder video review" allow="fullscreen" allowFullScreen /></div>
+                    <div className="r-name">Kirsten Schroeder</div>
+                    <div className="r-biz">Founder & Owner, The Christian Boho</div>
+                  </div>
+                </div>
+                <div className="review-card">
+                  <div>
+                    <div className="stars">★★★★★</div>
+                    <p className="review-text">Video testimonial from Dr. Suneel Dhand.</p>
+                  </div>
+                  <div className="review-author">
+                    <div className="review-video-frame"><iframe className="r-avatar r-video" src="https://drive.google.com/file/d/1T-s3bVCcsAFKPZNz0teo2UTGaqK-2Cmj/preview" title="Dr. Suneel Dhand video review" allow="fullscreen" allowFullScreen /></div>
+                    <div className="r-name">Dr. Suneel Dhand</div>
+                    <div className="r-biz">Co-Founder, Ojais Wellness</div>
                   </div>
                 </div>
               </div>
@@ -551,6 +554,8 @@ export default function Page() {
                 <button className="sdot active" data-review-index="0"></button>
                 <button className="sdot" data-review-index="1"></button>
                 <button className="sdot" data-review-index="2"></button>
+                <button className="sdot" data-review-index="3"></button>
+                <button className="sdot" data-review-index="4"></button>
               </div>
               <div className="sarrows">
                 <button className="sarrow" data-review-action="previous">
@@ -605,25 +610,25 @@ export default function Page() {
                 <div className="footer-col-title">Services</div>
                 <ul className="footer-col-links">
                   <li>
-                    <a href="/services#strategy">Email Strategy</a>
+                    <a href="/services/email-marketing#strategy">Email Strategy</a>
                   </li>
                   <li>
-                    <a href="/services#flows">Flows</a>
+                    <a href="/services/email-marketing#flows">Flows</a>
                   </li>
                   <li>
-                    <a href="/services#campaigns">Campaigns</a>
+                    <a href="/services/email-marketing#campaigns">Campaigns</a>
                   </li>
                   <li>
-                    <a href="/services#deliverability">Deliverability</a>
+                    <a href="/services/email-marketing#deliverability">Deliverability</a>
                   </li>
                   <li>
-                    <a href="/services#leadgen">Lead Generation</a>
+                    <a href="/services/email-marketing#leadgen">Lead Generation</a>
                   </li>
                   <li>
-                    <a href="/services#shopify">Shopify Management</a>
+                    <a href="/services/shopify-management#shopify">Shopify Management</a>
                   </li>
                   <li>
-                    <a href="/services#platform">Platform Management</a>
+                    <a href="/services/email-marketing#platform">Platform Management</a>
                   </li>
                 </ul>
               </div>

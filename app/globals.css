@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./case-studies/screenshots.css";
 @import "./case-studies/page-polish.css";
+@import "./public-design.css";
 
 :root {
   --site-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -57,7 +58,7 @@ select {
 }
 
 .page .nav-links a {
-  font-size: 13px !important;
+  font-size: 16px !important;
   font-weight: 500 !important;
   line-height: 1.4;
   letter-spacing: 0 !important;
@@ -403,4 +404,31 @@ body.calendly-popup-open {
     height: calc(100dvh - 86px);
     max-height: none;
   }
+}
+
+/* Fluid desktop frame: use available space while retaining readable gutters. */
+@media (min-width: 1280px) {
+  .page--home { --home-max: min(1600px, calc(100% - 40px)); }
+  .page--case-studies { --case-max: min(1600px, calc(100% - 40px)); }
+  .page--why-us { --why-max: min(1600px, calc(100% - 40px)); }
+  .page--services .container, .page--services .nav, .page--terms-of-service .container, .page--terms-of-service .nav, .page--privacy-policy .container, .page--privacy-policy .nav, .page--team .container, .page--team .nav { max-width: min(1600px, calc(100% - 40px)); }
+  .page--blog .container, .page--blog .nav, .page--templates .container, .page--templates .nav, .managed-case-page main, .footer-wrap .container { width: min(1600px, calc(100% - 40px)); }
+}
+/* Services is a disclosure on both desktop and mobile navigation. */
+.services-dropdown { position: relative; }
+.page .services-trigger { display: inline-flex; align-items: center; gap: 7px; border: 0; padding: 0; background: transparent; color: #a1a1a6; font: 500 16px/1.4 var(--site-font); cursor: pointer; transition: color .2s; }
+.page .services-trigger:hover, .page .services-trigger.active, .page .services-trigger[aria-expanded="true"] { color: #fff; }
+.services-dropdown-links { position: absolute; top: calc(100% + 16px); left: -16px; z-index: 150; min-width: 245px; padding: 8px; border: 1px solid #333338; border-radius: 10px; background: #19191c; box-shadow: 0 12px 32px #0005; }
+.services-dropdown:not(.services-dropdown--mobile) .services-dropdown-links::before { content: ""; position: absolute; top: -17px; left: 0; right: 0; height: 17px; }
+.page .nav-links .services-dropdown-links a, .services-dropdown-links a { display: block; padding: 12px; color: #d5d5da; text-decoration: none; font: 500 14px/1.5 var(--site-font) !important; border-radius: 5px; white-space: nowrap; }
+.services-dropdown-links a:hover, .services-dropdown-links a[aria-current="page"] { background: #26262b; color: #fff; }
+.services-trigger:focus-visible, .services-dropdown-links a:focus-visible { outline: 2px solid #ef6a73; outline-offset: 3px; }
+.mobile-bottom-nav .services-dropdown { flex: 1; min-width: 0; }
+.mobile-bottom-nav .services-trigger { width: 100%; }
+.mobile-bottom-nav .services-dropdown-links { position: absolute; top: auto; bottom: calc(100% + 16px); left: -30px; }
+.mobile-bottom-nav .services-dropdown-links a { flex-direction: row; min-height: 44px; text-align: left; }
+@media (max-width: 768px) {
+  .mobile-bottom-nav { overflow: visible; }
+  .mobile-bottom-nav .services-trigger { height: 100%; }
+  .mobile-bottom-nav .services-dropdown-links a { display: block; padding: 12px; font-size: 14px; }
 }

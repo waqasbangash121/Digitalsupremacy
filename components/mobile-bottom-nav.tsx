@@ -1,5 +1,6 @@
 "use client";
 
+import ServicesDropdown from "@/components/services-dropdown";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
@@ -45,6 +46,7 @@ export default function MobileBottomNav() {
       <nav className="mobile-bottom-nav" aria-label="Mobile navigation">
         {primaryItems.map((item) => {
           const active = item.href === "/" ? pathname === "/" : pathname === item.href || pathname.startsWith(`${item.href}/`);
+          if (item.icon === "services") return <ServicesDropdown key={item.href} mobile />;
           return <a key={item.href} href={item.href} className={active ? "active" : undefined}><Icon name={item.icon} /><span>{item.label}</span></a>;
         })}
         <button type="button" className={moreOpen || pathname === "/why-us" || pathname.startsWith("/team") ? "active" : undefined} onClick={() => setMoreOpen((value) => !value)} aria-expanded={moreOpen}><Icon name="more" /><span>More</span></button>

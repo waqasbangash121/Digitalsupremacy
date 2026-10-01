@@ -39,7 +39,7 @@ export default function SiteInteractions() {
     }
 
     let currentReview = 0;
-    let reviewTimer: number | undefined;
+
     let activePolicySection = "";
     let policyFrame: number | undefined;
 
@@ -85,8 +85,24 @@ export default function SiteInteractions() {
 
     const goToReview = (nextReview: number) => {
       if (!reviewTrack || reviewDots.length === 0) return;
-      currentReview = ((nextReview % reviewDots.length) + reviewDots.length) % reviewDots.length;
-      reviewTrack.style.transform = "translateX(-" + currentReview * 100 + "%)";
+      const reviewCards = Array.from(reviewTrack.querySelectorAll<HTMLElement>(".review-card"));
+      if (reviewCards.length === 0) return;
+      const nextIndex = ((nextReview % reviewCards.length) + reviewCards.length) % reviewCards.length;
+      if (nextIndex !== currentReview) {
+        // Reload the outgoing cross-origin Drive player to stop its audio/video.
+        const outgoingPlayer = reviewCards[currentReview]?.querySelector("iframe");
+        if (outgoingPlayer) outgoingPlayer.src = outgoingPlayer.src;
+      }
+      currentReview = nextIndex;
+      reviewTrack.style.transform = "none";
+      const reviewCount = reviewCards.length;
+      reviewCards.forEach((card, index) => {
+        const relativeIndex = (index - currentReview + reviewCount) % reviewCount;
+        card.classList.toggle("active", relativeIndex === 0);
+        card.classList.toggle("previous", relativeIndex === reviewCount - 1);
+        card.classList.toggle("next", relativeIndex === 1);
+        card.classList.toggle("carousel-hidden", relativeIndex !== 0 && relativeIndex !== 1 && relativeIndex !== reviewCount - 1);
+      });
       reviewDots.forEach((dot, index) => dot.classList.toggle("active", index === currentReview));
     };
 
@@ -120,20 +136,6 @@ export default function SiteInteractions() {
       }
     };
 
-    const clearReviewTimer = () => {
-      if (reviewTimer !== undefined) {
-        window.clearInterval(reviewTimer);
-        reviewTimer = undefined;
-      }
-    };
-
-    const startReviewTimer = () => {
-      clearReviewTimer();
-      if (reviewTrack && reviewDots.length > 1) {
-        reviewTimer = window.setInterval(() => goToReview(currentReview + 1), 5500);
-      }
-    };
-
     document.addEventListener("click", onClick);
 
     if (policySections.length > 0) {
@@ -142,17 +144,12 @@ export default function SiteInteractions() {
     }
 
     if (reviewTrack) {
-      reviewTrack.addEventListener("mouseenter", clearReviewTimer);
-      reviewTrack.addEventListener("mouseleave", startReviewTimer);
-      startReviewTimer();
+      goToReview(0);
     }
 
     return () => {
       document.removeEventListener("click", onClick);
       window.removeEventListener("scroll", onPolicyScroll);
-      reviewTrack?.removeEventListener("mouseenter", clearReviewTimer);
-      reviewTrack?.removeEventListener("mouseleave", startReviewTimer);
-      clearReviewTimer();
       if (policyFrame !== undefined) window.cancelAnimationFrame(policyFrame);
     };
   }, []);

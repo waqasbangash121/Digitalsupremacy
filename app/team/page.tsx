@@ -1,3 +1,4 @@
+import ServicesDropdown from "@/components/services-dropdown";
 import type { Metadata } from "next";
 import "./page.css";
 import "./social.css";
@@ -40,7 +41,10 @@ function MemberSocialLinks({ member, compact = false }: { member: TeamMember; co
 export default async function TeamPage() {
   const members = await getTeamMembers();
   const founder = members.find((member) => member.is_founder);
-  const team = members.filter((member) => !member.is_founder);
+  const team = [
+    ...(founder ? [founder] : []),
+    ...members.filter((member) => !member.is_founder),
+  ];
   return (
     <div className="page page--team">
       <div className="nav-wrap">
@@ -49,7 +53,7 @@ export default async function TeamPage() {
             <img src="/image/logo.png" alt="Digital Supremacy" className="logo-img" />
           </a>
           <ul className="nav-links">
-            <li><a href="/services">Services</a></li>
+            <li><ServicesDropdown /></li>
             <li><a href="/case-studies">Case Studies</a></li>
             <li><a href="/why-us">Why Us</a></li>
             <li><a href="/team" className="active">Our Team</a></li>
@@ -69,31 +73,18 @@ export default async function TeamPage() {
 
         <div className="container">
           <section className="team-section">
-            {founder && <article className="founder-card">
-              <div className={"founder-avatar " + (founder.image_url ? "has-image" : "")}>
-                {founder.image_url ? <img src={founder.image_url} alt={`${founder.name}, ${founder.role}`} /> : founder.initials}
-              </div>
-              <div className="founder-info">
-                <div className="founder-tag">Founder</div>
-                <h2 className="founder-name">{founder.name}</h2>
-                <div className="founder-role">{founder.role}</div>
-                {founder.bio && <p className="founder-bio">{founder.bio}</p>}
-                <MemberSocialLinks member={founder} />
-              </div>
-            </article>}
-
             <div className="team-grid">
-              {team.map((member, index) => (
+              {team.map((member) => (
                 <article className="team-card" key={member.id}>
                   <div className={"team-avatar av-" + member.tone + (member.image_url ? " has-image" : "")}>
                     {member.image_url ? <img src={member.image_url} alt={`${member.name}, ${member.role}`} /> : <span>{member.initials}</span>}
-                    <small>{String(index + 1).padStart(2, "0")}</small>
                   </div>
                   <div className="team-card-info">
                     <div className="team-card-copy">
                       <h2 className="team-card-name">{member.name}</h2>
                       <div className="team-card-role">{member.role}</div>
-                      <span className="team-card-tag">{member.tag}</span>
+                      <span className="team-card-tag">{member.is_founder ? "Founder" : member.tag}</span>
+                      {member.is_founder && member.bio && <p className="founder-bio">{member.bio}</p>}
                     </div>
                     <MemberSocialLinks member={member} compact />
                   </div>
@@ -133,7 +124,7 @@ export default async function TeamPage() {
             <div>
               <div className="footer-col-title">Services</div>
               <ul className="footer-col-links">
-                <li><a href="/services#strategy">Email Strategy</a></li><li><a href="/services#flows">Flows</a></li><li><a href="/services#campaigns">Campaigns</a></li><li><a href="/services#deliverability">Deliverability</a></li><li><a href="/services#leadgen">Lead Generation</a></li><li><a href="/services#shopify">Shopify Management</a></li><li><a href="/services#platform">Platform Management</a></li>
+                <li><a href="/services/email-marketing#strategy">Email Strategy</a></li><li><a href="/services/email-marketing#flows">Flows</a></li><li><a href="/services/email-marketing#campaigns">Campaigns</a></li><li><a href="/services/email-marketing#deliverability">Deliverability</a></li><li><a href="/services/email-marketing#leadgen">Lead Generation</a></li><li><a href="/services/shopify-management#shopify">Shopify Management</a></li><li><a href="/services/email-marketing#platform">Platform Management</a></li>
               </ul>
             </div>
             <div>

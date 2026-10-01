@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 const requiredLinks = [
   { href: "/templates", label: "Templates" },
-  { href: "/blog", label: "Blog" },
+  { href: "/#reviews", label: "Reviews" },
 ] as const;
 
 export default function NavigationSync() {
