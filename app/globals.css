@@ -4,6 +4,7 @@
 @import "./public-design.css";
 
 :root {
+  color-scheme: light;
   --site-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -93,10 +94,10 @@ select {
     grid-template-columns: repeat(6, minmax(0, 1fr));
     align-items: stretch;
     overflow: hidden;
-    border: 1px solid rgba(255,255,255,.09);
+    border: 1px solid rgba(23,23,25,.12);
     border-radius: 18px;
-    background: rgba(15,15,16,.96);
-    box-shadow: 0 18px 50px rgba(0,0,0,.42);
+    background: rgba(255,255,255,.96);
+    box-shadow: 0 18px 50px rgba(23,23,25,.12);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
   }
@@ -107,14 +108,14 @@ select {
     min-width: 0;
     border: 0;
     background: transparent;
-    color: #8f8f95;
+    color: #5f5f68;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 4px;
     padding: 9px 3px 8px;
-    font: 500 10px/1 var(--site-font);
+    font: 500 11px/1.2 var(--site-font);
     text-decoration: none;
     cursor: pointer;
     transition: color .2s ease, background .2s ease;
@@ -145,7 +146,7 @@ select {
   .mobile-bottom-nav a.active,
   .mobile-bottom-nav button.active {
     color: #fff;
-    background: rgba(255,255,255,.035);
+    background: #f5f5f7;
   }
 
   .mobile-bottom-nav a.active::before,
@@ -172,9 +173,9 @@ select {
     display: grid;
     gap: 8px;
     padding: 16px;
-    border: 1px solid rgba(255,255,255,.09);
+    border: 1px solid rgba(23,23,25,.12);
     border-radius: 20px;
-    background: #151517;
+    background: #fff;
     box-shadow: 0 24px 70px rgba(0,0,0,.5);
     opacity: 0;
     transform: translateY(16px) scale(.98);
@@ -203,9 +204,9 @@ select {
   .mobile-nav-more-head button {
     width: 34px;
     height: 34px;
-    border: 1px solid rgba(255,255,255,.1);
+    border: 1px solid rgba(23,23,25,.12);
     border-radius: 50%;
-    background: #202023;
+    background: #f5f5f7;
     color: #fff;
     font-size: 22px;
     line-height: 1;
@@ -214,10 +215,10 @@ select {
   .mobile-nav-more-panel > a {
     min-height: 48px;
     padding: 0 14px;
-    border: 1px solid rgba(255,255,255,.07);
+    border: 1px solid rgba(23,23,25,.12);
     border-radius: 12px;
-    background: #1b1b1e;
-    color: #efeff1;
+    background: #f5f5f7;
+    color: #171719;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -286,7 +287,7 @@ body.calendly-popup-open {
   overflow: hidden;
   border: 1px solid rgba(193,18,31,.28);
   border-radius: 14px;
-  background: #0f0f10;
+  background: #fff;
   box-shadow: 0 34px 110px rgba(0,0,0,.62), 0 0 0 1px rgba(255,255,255,.04) inset;
   transform: translateY(14px) scale(.985);
   transition: transform .22s ease;
@@ -303,9 +304,9 @@ body.calendly-popup-open {
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  border-bottom: 1px solid rgba(255,255,255,.08);
-  background: linear-gradient(135deg, #151517, #0d0d0f 68%);
-  color: #ffffff;
+  border-bottom: 1px solid rgba(23,23,25,.12);
+  background: #f5f5f7;
+  color: #171719;
 }
 
 .calendly-popup-head::before {
@@ -336,10 +337,10 @@ body.calendly-popup-open {
   width: 38px;
   height: 38px;
   flex: 0 0 38px;
-  border: 1px solid rgba(255,255,255,.14);
+  border: 1px solid rgba(23,23,25,.12);
   border-radius: 50%;
-  background: #1e1e22;
-  color: #ffffff;
+  background: #fff;
+  color: #171719;
   font: 700 20px/1 var(--site-font);
   cursor: pointer;
 }
@@ -416,12 +417,12 @@ body.calendly-popup-open {
 }
 /* Services is a disclosure on both desktop and mobile navigation. */
 .services-dropdown { position: relative; }
-.page .services-trigger { display: inline-flex; align-items: center; gap: 7px; border: 0; padding: 0; background: transparent; color: #a1a1a6; font: 500 16px/1.4 var(--site-font); cursor: pointer; transition: color .2s; }
+.page .services-trigger { display: inline-flex; align-items: center; gap: 7px; border: 0; padding: 0; background: transparent; color: #5f5f68; font: 500 16px/1.4 var(--site-font); cursor: pointer; transition: color .2s; }
 .page .services-trigger:hover, .page .services-trigger.active, .page .services-trigger[aria-expanded="true"] { color: #fff; }
-.services-dropdown-links { position: absolute; top: calc(100% + 16px); left: -16px; z-index: 150; min-width: 245px; padding: 8px; border: 1px solid #333338; border-radius: 10px; background: #19191c; box-shadow: 0 12px 32px #0005; }
+.services-dropdown-links { position: absolute; top: calc(100% + 16px); left: -16px; z-index: 150; min-width: 245px; padding: 8px; border: 1px solid #dedee3; border-radius: 10px; background: #fff; box-shadow: 0 12px 32px #17171914; }
 .services-dropdown:not(.services-dropdown--mobile) .services-dropdown-links::before { content: ""; position: absolute; top: -17px; left: 0; right: 0; height: 17px; }
-.page .nav-links .services-dropdown-links a, .services-dropdown-links a { display: block; padding: 12px; color: #d5d5da; text-decoration: none; font: 500 14px/1.5 var(--site-font) !important; border-radius: 5px; white-space: nowrap; }
-.services-dropdown-links a:hover, .services-dropdown-links a[aria-current="page"] { background: #26262b; color: #fff; }
+.page .nav-links .services-dropdown-links a, .services-dropdown-links a { display: block; padding: 12px; color: #171719; text-decoration: none; font: 500 14px/1.5 var(--site-font) !important; border-radius: 5px; white-space: nowrap; }
+.services-dropdown-links a:hover, .services-dropdown-links a[aria-current="page"] { background: #f5f5f7; color: #fff; }
 .services-trigger:focus-visible, .services-dropdown-links a:focus-visible { outline: 2px solid #ef6a73; outline-offset: 3px; }
 .mobile-bottom-nav .services-dropdown { flex: 1; min-width: 0; }
 .mobile-bottom-nav .services-trigger { width: 100%; }
@@ -432,3 +433,15 @@ body.calendly-popup-open {
   .mobile-bottom-nav .services-trigger { height: 100%; }
   .mobile-bottom-nav .services-dropdown-links a { display: block; padding: 12px; font-size: 14px; }
 }
+
+/* Shared light-theme text states; primary red actions retain white labels. */
+.mobile-bottom-nav a.active,
+.mobile-bottom-nav button.active,
+.mobile-nav-more-head,
+.mobile-nav-more-head button,
+.page .services-trigger:hover,
+.page .services-trigger.active,
+.page .services-trigger[aria-expanded="true"],
+.services-dropdown-links a:hover,
+.services-dropdown-links a[aria-current="page"] { color: #171719; }
+.calendly-popup-head button:hover { color: #fff; }

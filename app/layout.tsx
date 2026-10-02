@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 import CalendlyPopup from "@/components/calendly-popup";
-import FooterSocialSync from "@/components/footer-social-sync";
 import MobileBottomNav from "@/components/mobile-bottom-nav";
 import NavigationSync from "@/components/navigation-sync";
 
@@ -39,10 +38,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>
+      {/* Grammarly adds body attributes before hydration; scope suppression to this element. */}
+      <body suppressHydrationWarning>
         {children}
         <NavigationSync />
-        <FooterSocialSync />
         <MobileBottomNav />
         <CalendlyPopup />
         <Analytics />

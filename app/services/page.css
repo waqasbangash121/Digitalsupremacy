@@ -1,17 +1,17 @@
 /* Generated once from the legacy page styles. Edit this file directly. */
 
-.page--services *, .page--services *::before, .page--services *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.page--services main *, .page--services main *::before, .page--services main *::after { box-sizing: border-box; margin: 0; padding: 0; }
 .page--services {
   --red: #C1121F;
   --red-dark: #A00E19;
-  --bg: #0F0F10;
-  --bg-card: #1A1A1C;
-  --bg-raised: #222225;
-  --border: #2A2A2E;
-  --text: #F0F0F0;
-  --text-muted: #A1A1A6;
-  --text-dim: #6B6B70;
-  --font: 'Inter', sans-serif;
+  --bg: #ffffff;
+  --bg-card: #f5f5f7;
+  --bg-raised: #ededf0;
+  --border: #dedee3;
+  --text: #171719;
+  --text-muted: #5f5f68;
+  --text-dim: #666670;
+  --font: var(--site-font);
 }
 .page--services { scroll-behavior: smooth; }
 .page--services {
@@ -27,7 +27,7 @@
 /* NAV */
 .page--services .nav-wrap {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(15,15,16,0.97);
+  background: rgba(255,255,255,0.97);
   backdrop-filter: blur(8px);
   
 }
@@ -44,9 +44,9 @@
   display: block;
 }
 
-.page--services .nav-links { display: flex; gap: 24px; list-style: none; }
-.page--services .nav-links a { font-size: 13px; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
-.page--services .nav-links a:hover, .page--services .nav-links a.active { color: var(--text); }
+.page--services .nav-wrap .nav-links { display: flex; gap: 24px; list-style: none; }
+.page--services .nav-wrap .nav-links a { font-size: 13px; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.page--services .nav-wrap .nav-links a:hover, .page--services .nav-wrap .nav-links a.active { color: var(--text); }
 .page--services .nav-cta {
   background: var(--red); color: #fff;
   font-family: var(--font); font-size: 13px; font-weight: 600;
@@ -85,7 +85,7 @@
   padding: 24px 0;
   
   position: sticky; top: 64px; z-index: 90;
-  background: rgba(15,15,16,0.97);
+  background: rgba(255,255,255,0.97);
   backdrop-filter: blur(8px);
 }
 .page--services .service-nav-inner {
@@ -247,7 +247,7 @@
   .page--services .page-hero { padding: 56px 0 48px; }
   .page--services .services-wrap { padding: 48px 0; }
   .page--services .service-block { padding: 48px 0; gap: 24px; }
-  .page--services .nav-links { display: none; }
+  .page--services .nav-wrap .nav-links { display: none; }
   .page--services .cta-band h2 { font-size: 28px; }
 }
 

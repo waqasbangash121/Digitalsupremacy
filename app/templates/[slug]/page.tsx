@@ -1,4 +1,5 @@
-import ServicesDropdown from "@/components/services-dropdown";
+import Link from "next/link";
+import SiteHeader from "@/components/site-header";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import SiteFooter from "@/components/site-footer";
@@ -25,16 +26,10 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
 
   return (
     <div className="page page--templates template-detail-page">
-      <div className="nav-wrap">
-        <nav className="nav">
-          <a href="/" className="logo"><img src="/image/logo.png" alt="Digital Supremacy" className="logo-img" /></a>
-          <ul className="nav-links"><li><ServicesDropdown /></li><li><a href="/case-studies">Case Studies</a></li><li><a href="/templates" className="active">Templates</a></li><li><a href="/why-us">Why Us</a></li><li><a href="/team">Our Team</a></li></ul>
-          <a className="nav-cta" href="https://calendly.com/addyawan57/15min" target="_blank" rel="noreferrer">Book a Call</a>
-        </nav>
-      </div>
+      <SiteHeader />
 
       <main className="container template-detail-main">
-        <a className="template-back-link" href="/templates">← All templates</a>
+        <Link className="template-back-link" href="/templates">← All templates</Link>
         <section className="template-detail-hero">
           <div className="template-detail-copy">
             <p className="templates-label">{template.category || "Email Template"}</p>

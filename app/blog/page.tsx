@@ -1,4 +1,4 @@
-import ServicesDropdown from "@/components/services-dropdown";
+import SiteHeader from "@/components/site-header";
 import type { Metadata } from "next";
 import SiteFooter from "@/components/site-footer";
 import { getBlogPosts } from "@/lib/blogs-db";
@@ -25,7 +25,7 @@ export default async function BlogPage() {
 
   return (
     <div className="page page--blog">
-      <div className="nav-wrap"><nav className="nav"><a href="/" className="logo"><img src="/image/logo.png" alt="Digital Supremacy" className="logo-img" /></a><ul className="nav-links"><li><ServicesDropdown /></li><li><a href="/case-studies">Case Studies</a></li><li><a href="/templates">Templates</a></li><li><a href="/#reviews">Reviews</a></li><li><a href="/why-us">Why Us</a></li><li><a href="/team">Our Team</a></li></ul><a className="nav-cta" href="https://calendly.com/addyawan57/15min" target="_blank" rel="noreferrer">Book a Call</a></nav></div>
+      <SiteHeader />
       <main>
         <section className="blog-hero container"><p className="blog-kicker">Insights & strategy</p><h1>Ideas that turn email into a stronger revenue channel.</h1><p>Practical guidance on lifecycle strategy, retention, creative, deliverability, and ecommerce growth—written by the team doing the work.</p></section>
 

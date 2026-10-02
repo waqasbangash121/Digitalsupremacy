@@ -8,9 +8,9 @@
   padding: clamp(12px, 2vw, 20px);
   overflow: hidden;
   isolation: isolate;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(23,23,25,0.1);
   border-radius: 18px;
-  background: linear-gradient(145deg, rgba(34, 34, 37, 0.94), rgba(15, 15, 16, 0.96));
+  background: linear-gradient(145deg, rgba(34, 34, 37, 0.94), rgba(255,255,255,0.96));
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.26);
 }
 
@@ -45,7 +45,7 @@
   max-width: 100% !important;
   height: auto !important;
   margin: 0 !important;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(23,23,25,0.1);
   border-radius: 12px;
   background: #0a0a0b;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
@@ -54,7 +54,7 @@
 }
 
 .page--case-studies.page--case-studies .screenshots-group > .screenshot-img:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(23,23,25,0.2);
   box-shadow: 0 16px 34px rgba(0, 0, 0, 0.4);
   transform: translateY(-2px);
 }
@@ -102,7 +102,7 @@
   max-width: 100% !important;
   height: auto !important;
   margin: 0 !important;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(23,23,25,0.1);
   border-radius: 12px;
   background: #0a0a0b;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
@@ -111,7 +111,7 @@
 }
 
 .page--case-studies.page--case-studies .screenshots-group.two-screenshots > div > .screenshot-img:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(23,23,25,0.2);
   box-shadow: 0 16px 34px rgba(0, 0, 0, 0.4);
   transform: translateY(-2px);
 }

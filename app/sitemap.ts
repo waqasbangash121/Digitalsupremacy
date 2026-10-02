@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getBlogPosts } from "@/lib/blogs-db";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://yourdigitalsupremacy.com";
-const staticRoutes = ["/", "/services", "/services/email-marketing", "/services/social-media-marketing", "/case-studies", "/templates", "/blog", "/why-us", "/team", "/privacy-policy", "/terms-of-service"];
+const staticRoutes = ["/", "/services", "/services/email-marketing", "/services/social-media-marketing", "/case-studies", "/reviews", "/templates", "/blog", "/why-us", "/team", "/privacy-policy", "/terms-of-service"];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let posts: Awaited<ReturnType<typeof getBlogPosts>> = [];

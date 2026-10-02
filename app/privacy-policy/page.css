@@ -3,12 +3,12 @@
 .page--privacy-policy *, .page--privacy-policy *::before, .page--privacy-policy *::after { box-sizing: border-box; margin: 0; padding: 0; }
 .page--privacy-policy {
   --red: #C1121F;
-  --bg: #0F0F10;
-  --bg-card: #1A1A1C;
-  --border: #2A2A2E;
-  --text: #F0F0F0;
-  --text-muted: #A1A1A6;
-  --text-dim: #6B6B70;
+  --bg: #ffffff;
+  --bg-card: #f5f5f7;
+  --border: #dedee3;
+  --text: #171719;
+  --text-muted: #5f5f68;
+  --text-dim: #666670;
   --font: 'Inter', sans-serif;
 }
 .page--privacy-policy { scroll-behavior: smooth; }
@@ -25,7 +25,7 @@
 /* NAV */
 .page--privacy-policy .nav-wrap {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(15,15,16,0.97);
+  background: rgba(255,255,255,0.97);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
 }

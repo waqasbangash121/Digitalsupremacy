@@ -9,7 +9,7 @@ const primaryItems = [
   { href: "/services", label: "Services", icon: "services" },
   { href: "/case-studies", label: "Work", icon: "work" },
   { href: "/templates", label: "Templates", icon: "templates" },
-  { href: "/#reviews", label: "Reviews", icon: "reviews" },
+  { href: "/reviews", label: "Reviews", icon: "reviews" },
 ] as const;
 
 function Icon({ name }: { name: string }) {

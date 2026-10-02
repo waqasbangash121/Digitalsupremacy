@@ -43,7 +43,7 @@
 
 /* Brands section should sit cleanly without top/bottom rules. */
 .page--home .brands-section {
-  background: #0f0f10 !important;
+  background: #ffffff !important;
   padding: 56px 0 !important;
 }
 
@@ -122,7 +122,7 @@
   min-height: 380px;
   overflow: hidden;
   border: 0 !important;
-  background-color: #111113 !important;
+  background-color: #f5f5f7 !important;
   background-size: cover !important;
   background-position: center !important;
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);

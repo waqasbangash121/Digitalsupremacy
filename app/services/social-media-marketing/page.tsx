@@ -1,4 +1,6 @@
+import { ServiceVisual } from "@/components/service-visual";
 import type { Metadata } from "next";
+import { ServiceHero, ServiceCapabilities, ServiceClosing } from "@/components/service-detail";
 import ServicesShell from "@/components/services-shell";
 
 export const metadata: Metadata = {
@@ -15,15 +17,12 @@ const capabilities = [
 
 export default function Page() {
   return <ServicesShell>
-    <div className="container"><header className="page-hero">
-      <p className="page-label">Social Media Marketing</p>
-      <h1>A brand your audience wants to follow.</h1>
-      <div className="hero-bottom"><p>Build a consistent presence with a clear strategy, thoughtful content, and conversations that bring your audience closer.</p><a className="btn-primary" href="https://calendly.com/addyawan57/15min" target="_blank" rel="noreferrer">Book a free call ↗</a></div>
-    </header>
-    <p className="capabilities-label">Social Media Marketing capabilities</p>
+    <div className="service-detail">
+    <ServiceHero social label="Social Media Marketing" title="A brand your audience wants to follow." description="Build a consistent presence with a clear strategy, thoughtful content, and conversations that bring your audience closer." />
+    <ServiceCapabilities label="Social Media Marketing capabilities">
     <div className="services-wrap">{capabilities.map((capability, index) => <section className="service-block" key={capability.title}>
-      <div className="service-left"><p className="service-number">0{index + 1}</p><h2 className="service-title">{capability.title}</h2><p className="service-tagline">{capability.tagline}</p></div>
-      <div className="service-right"><p className="service-intro">{capability.description}</p><ul className="service-list">{capability.items.map(item => <li key={item}>{item}</li>)}</ul></div>
-    </section>)}</div></div>
+      <div className="service-left"><p className="service-number">0{index + 1}</p><ServiceVisual type={["strategy", "campaigns", "community", "reporting"][index]} /></div>
+      <div className="service-right"><h2 className="service-title">{capability.title}</h2><p className="service-tagline">{capability.tagline}</p><p className="service-intro">{capability.description}</p><ul className="service-list">{capability.items.map(item => <li key={item}>{item}</li>)}</ul></div>
+    </section>)}</div></ServiceCapabilities><ServiceClosing social /></div>
   </ServicesShell>;
 }

@@ -1,16 +1,20 @@
+import { ServiceVisual } from "@/components/service-visual";
+
 export default function Capabilities() {
   return <div className="services-wrap">
     <div className="service-block" id="strategy">
       <div className="service-left">
         <div className="service-number">01</div>
-        <h2 className="service-title">Email Strategy</h2>
-        <div className="service-tagline">Everything starts here.</div>
         <a className="service-cta" href="https://calendly.com/addyawan57/15min" target="_blank">
           Get started
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
+        <ServiceVisual type="strategy" />
       </div>
       <div className="service-right">
+        <h2 className="service-title">Email Strategy</h2>
+        <div className="service-tagline">Everything starts here.</div>
+
         <p className="service-intro">We don&apos;t send emails for the sake of it. We build a strategy that turns your email channel into a <strong>predictable revenue driver.</strong></p>
         <div className="list-group">
           <div className="list-group-title">What we do</div>
@@ -32,14 +36,16 @@ export default function Capabilities() {
     <div className="service-block" id="flows">
       <div className="service-left">
         <div className="service-number">02</div>
-        <h2 className="service-title">Flows &amp; Automations</h2>
-        <div className="service-tagline">Your highest ROI channel, built to run 24/7.</div>
         <a className="service-cta" href="https://calendly.com/addyawan57/15min" target="_blank">
           Get started
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
+        <ServiceVisual type="flows" />
       </div>
       <div className="service-right">
+        <h2 className="service-title">Flows &amp; Automations</h2>
+        <div className="service-tagline">Your highest ROI channel, built to run 24/7.</div>
+
         <p className="service-intro">We design, write, and implement complete flow systems that <strong>capture revenue at every stage</strong> of the customer journey.</p>
 
         <div className="list-group">
@@ -106,14 +112,16 @@ export default function Capabilities() {
     <div className="service-block" id="campaigns">
       <div className="service-left">
         <div className="service-number">03</div>
-        <h2 className="service-title">Campaigns</h2>
-        <div className="service-tagline">This is where we drive immediate revenue.</div>
         <a className="service-cta" href="https://calendly.com/addyawan57/15min" target="_blank">
           Get started
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
+        <ServiceVisual type="campaigns" />
       </div>
       <div className="service-right">
+        <h2 className="service-title">Campaigns</h2>
+        <div className="service-tagline">This is where we drive immediate revenue.</div>
+
         <p className="service-intro">We plan, design, and execute campaigns that <strong>convert without burning your list.</strong></p>
 
         <div className="list-group">
@@ -159,14 +167,16 @@ export default function Capabilities() {
     <div className="service-block" id="deliverability">
       <div className="service-left">
         <div className="service-number">04</div>
-        <h2 className="service-title">Deliverability</h2>
-        <div className="service-tagline">If your emails don&apos;t land, nothing else matters.</div>
         <a className="service-cta" href="https://calendly.com/addyawan57/15min" target="_blank">
           Get started
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
+        <ServiceVisual type="deliverability" />
       </div>
       <div className="service-right">
+        <h2 className="service-title">Deliverability</h2>
+        <div className="service-tagline">If your emails don&apos;t land, nothing else matters.</div>
+
         <p className="service-intro">We make sure your emails <strong>actually reach the inbox.</strong></p>
 
         <div className="list-group">
@@ -191,14 +201,16 @@ export default function Capabilities() {
     <div className="service-block" id="leadgen">
       <div className="service-left">
         <div className="service-number">05</div>
-        <h2 className="service-title">Lead Generation</h2>
-        <div className="service-tagline">No list = no revenue.</div>
         <a className="service-cta" href="https://calendly.com/addyawan57/15min" target="_blank">
           Get started
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
+        <ServiceVisual type="leadgen" />
       </div>
       <div className="service-right">
+        <h2 className="service-title">Lead Generation</h2>
+        <div className="service-tagline">No list = no revenue.</div>
+
         <p className="service-intro">We build systems that consistently turn <strong>traffic into subscribers and buyers.</strong></p>
 
         <div className="list-group">
@@ -222,14 +234,16 @@ export default function Capabilities() {
     <div className="service-block" id="platform">
       <div className="service-left">
         <div className="service-number">06</div>
-        <h2 className="service-title">Platform Management</h2>
-        <div className="service-tagline">We handle your entire email platform so nothing breaks and everything performs.</div>
         <a className="service-cta" href="https://calendly.com/addyawan57/15min" target="_blank">
           Get started
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
+        <ServiceVisual type="platform" />
       </div>
       <div className="service-right">
+        <h2 className="service-title">Platform Management</h2>
+        <div className="service-tagline">We handle your entire email platform so nothing breaks and everything performs.</div>
+
         <p className="service-intro">You don&apos;t manage tools. <strong>We manage the system.</strong></p>
 
         <div className="list-group">

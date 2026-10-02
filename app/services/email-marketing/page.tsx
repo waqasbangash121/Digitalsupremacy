@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
 import ServicesShell from "@/components/services-shell";
+import { ServiceHero, ServiceCapabilities, ServiceClosing } from "@/components/service-detail";
 import Capabilities from "@/components/email-capabilities";
 export const metadata: Metadata = { title: "Email Marketing — Digital Supremacy", description: "Every capability is designed to compound — strategy informs flows, flows support campaigns, and everything works together to grow your revenue." };
-export default function Page() { return <ServicesShell><div className="container"><header className="page-hero"><p className="page-label">Email Marketing</p><h1>Make email your most reliable revenue channel.</h1><div className="hero-bottom"><p>Every capability is designed to compound — strategy informs flows, flows support campaigns, and everything works together to grow your revenue.</p><a className="btn-primary" href="https://calendly.com/addyawan57/15min" target="_blank" rel="noreferrer">Book a free call ↗</a></div></header></div><nav className="service-nav" aria-label="Email Marketing capabilities"><div className="container"><div className="service-nav-inner"><a className="snav-btn" href="#strategy">Email Strategy</a><a className="snav-btn" href="#flows">Flows</a><a className="snav-btn" href="#campaigns">Campaigns</a><a className="snav-btn" href="#deliverability">Deliverability</a><a className="snav-btn" href="#leadgen">Lead Generation</a><a className="snav-btn" href="#platform">Platform Management</a></div></div></nav><div className="container"><p className="capabilities-label">Email Marketing capabilities</p><Capabilities /></div></ServicesShell>; }
+export default function Page() {
+  return <ServicesShell><div className="service-detail">
+    <ServiceHero label="Email Marketing" title="Make email your most reliable revenue channel." description="Every capability is designed to compound — strategy informs flows, flows support campaigns, and everything works together to grow your revenue." />
+    <nav className="sd-capability-nav" aria-label="Email Marketing capabilities"><div className="sd-container">{[["strategy", "Email Strategy"], ["flows", "Flows"], ["campaigns", "Campaigns"], ["deliverability", "Deliverability"], ["leadgen", "Lead Generation"], ["platform", "Platform Management"]].map(([id, label]) => <a key={id} href={`#${id}`}>{label}</a>)}</div></nav>
+    <ServiceCapabilities label="Email Marketing capabilities"><Capabilities /></ServiceCapabilities>
+    <ServiceClosing />
+  </div></ServicesShell>;
+}

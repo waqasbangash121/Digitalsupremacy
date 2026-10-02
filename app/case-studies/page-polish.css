@@ -42,7 +42,7 @@
   position: relative;
   overflow: hidden;
   padding: clamp(28px, 6vw, 72px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(23,23,25,0.1);
   border-radius: 22px;
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.26);
 }
@@ -72,14 +72,14 @@
 .page--case-studies.page--case-studies .cs-period {
   min-width: 168px;
   padding: 14px 18px;
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(23,23,25,0.12);
   border-radius: 12px;
-  background: rgba(15, 15, 16, 0.62);
+  background: rgba(255,255,255,0.62);
 }
 
 .page--case-studies.page--case-studies .stat-strip {
   margin-bottom: 64px;
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(23,23,25,0.1);
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.2);
@@ -88,7 +88,7 @@
 .page--case-studies.page--case-studies .stat-item {
   min-height: 116px;
   padding: 24px;
-  background: rgba(15, 15, 16, 0.58);
+  background: rgba(255,255,255,0.58);
 }
 
 .page--case-studies.page--case-studies .stat-item-val { font-size: clamp(1.65rem, 3vw, 2.15rem); }
@@ -120,7 +120,7 @@
 
 .page--case-studies.page--case-studies .col-block {
   padding: clamp(22px, 3vw, 30px);
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(23,23,25,0.1);
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.035);
 }
@@ -142,7 +142,7 @@
 }
 
 .page--case-studies.page--case-studies .phase:hover {
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(23,23,25,0.1);
   background: rgba(255, 255, 255, 0.035);
 }
 
@@ -165,9 +165,9 @@
 .page--case-studies.page--case-studies .result-card {
   min-height: 150px;
   padding: 20px;
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(23,23,25,0.1);
   border-radius: 16px;
-  background: linear-gradient(145deg, rgba(34, 34, 37, 0.98), rgba(15, 15, 16, 0.88));
+  background: linear-gradient(145deg, rgba(34, 34, 37, 0.98), rgba(255,255,255,0.88));
 }
 
 .page--case-studies.page--case-studies .result-card-num {
@@ -177,13 +177,13 @@
 
 .page--case-studies.page--case-studies .diff-block,
 .page--case-studies.page--case-studies .cs-closing {
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(23,23,25,0.1);
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.035);
 }
 
 .page--case-studies.page--case-studies .diff-block { border-left-color: var(--red); }
-.page--case-studies.page--case-studies .cta-band { margin-top: 32px; border-top-color: rgba(255, 255, 255, 0.1); background: transparent; }
+.page--case-studies.page--case-studies .cta-band { margin-top: 32px; border-top-color: rgba(23,23,25,0.1); background: transparent; }
 
 @media (max-width: 860px) {
   .page--case-studies.page--case-studies .cs-header,
