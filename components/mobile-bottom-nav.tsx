@@ -8,7 +8,7 @@ const primaryItems = [
   { href: "/", label: "Home", icon: "home" },
   { href: "/services", label: "Services", icon: "services" },
   { href: "/case-studies", label: "Work", icon: "work" },
-  { href: "/templates", label: "Templates", icon: "templates" },
+  { href: "/portfolio", label: "Portfolio", icon: "portfolio" },
   { href: "/reviews", label: "Reviews", icon: "reviews" },
 ] as const;
 
@@ -16,7 +16,7 @@ function Icon({ name }: { name: string }) {
   if (name === "home") return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.8 12 3l9 7.8v9.1a1.1 1.1 0 0 1-1.1 1.1H4.1A1.1 1.1 0 0 1 3 19.9Z"/><path d="M9 21v-7h6v7"/></svg>;
   if (name === "services") return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="18" cy="18" r="2"/></svg>;
   if (name === "work") return <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M9 6V4h6v2M3 11h18"/></svg>;
-  if (name === "templates") return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>;
+  if (name === "portfolio") return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>;
   if (name === "reviews") return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z"/></svg>;
   return <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>;
 }

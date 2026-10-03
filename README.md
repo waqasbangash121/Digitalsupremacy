@@ -59,3 +59,7 @@ scripts/
   convert-html-to-tsx.mjs          # HTML to TSX converter
   sync-static-assets.mjs           # Copies legacy assets into public/ before dev/build
 ```
+
+## Review video playback
+
+Review file IDs and playback settings live in `lib/reviews.ts`. Keep the Drive files shared as **Anyone with the link → Viewer**; direct playback also needs downloading enabled. MP4 reviews stream through the allowlisted `/api/review-video/[id]` route, which forwards byte ranges for seeking. Set `playback: "drive"` for MOV files or formats that need Drive's preview player. Native playback errors or a 20-second stall fall back to Drive preview. Both players use a fixed 16:9 frame and preserve the full video without cropping.

@@ -28,7 +28,7 @@
 .hr-close { flex-shrink: 0; display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #e5e5e8; border-radius: 50%; background: #f7f7f8; color: #171719; font-size: 18px; cursor: pointer; }
 .hr-close:hover { background: #eeeef0; }
 .hr-player { position: relative; aspect-ratio: 16 / 9; background: #111; }
-.hr-player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.hr-player .rv-video { border-radius: 0; }
 .hr-loading { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 14px; }
 .hr-dialog-foot { padding: 16px 26px; font-size: 12px; color: #66666d; }
 .hr-dialog-foot a { display: inline-block; color: #a00e19; text-decoration: underline; text-underline-offset: 3px; padding-block: 8px; }

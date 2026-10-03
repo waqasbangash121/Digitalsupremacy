@@ -24,17 +24,17 @@ export default function SiteInteractions() {
 
     if (window.location.pathname === "/") {
       const navLinks = document.querySelector<HTMLUListElement>(".page--home .nav-links");
-      const hasTemplatesLink = navLinks?.querySelector<HTMLAnchorElement>('a[href="/templates"]');
+      const hasPortfolioLink = navLinks?.querySelector<HTMLAnchorElement>('a[href="/portfolio"]');
 
-      if (navLinks && !hasTemplatesLink) {
-        const templatesItem = document.createElement("li");
-        const templatesLink = document.createElement("a");
-        templatesLink.href = "/templates";
-        templatesLink.textContent = "Templates";
-        templatesItem.appendChild(templatesLink);
+      if (navLinks && !hasPortfolioLink) {
+        const portfolioItem = document.createElement("li");
+        const portfolioLink = document.createElement("a");
+        portfolioLink.href = "/portfolio";
+        portfolioLink.textContent = "Portfolio";
+        portfolioItem.appendChild(portfolioLink);
 
         const whyUsItem = navLinks.querySelector<HTMLAnchorElement>('a[href="/why-us"]')?.parentElement;
-        navLinks.insertBefore(templatesItem, whyUsItem ?? null);
+        navLinks.insertBefore(portfolioItem, whyUsItem ?? null);
       }
     }
 

@@ -1,6 +1,7 @@
 "use client";
 
-import Image from "next/image";
+import BrandLogo from "@/components/brand-logo";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ServicesDropdown from "./services-dropdown";
@@ -8,7 +9,7 @@ import "./site-header.css";
 
 const links = [
   ["/case-studies", "Case Studies"],
-  ["/templates", "Templates"],
+  ["/portfolio", "Portfolio"],
   ["/reviews", "Reviews"],
   ["/why-us", "Why Us"],
   ["/team", "Our Team"],
@@ -20,7 +21,7 @@ export default function SiteHeader() {
   return <header className="site-header">
     <nav className="site-header-nav" aria-label="Main navigation">
       <Link className="site-header-logo" href="/" aria-label="Digital Supremacy home">
-        <Image src="/image/logo.png" width={232} height={55} alt="Digital Supremacy" priority />
+        <BrandLogo width={232} priority />
       </Link>
       <ul className="nav-links site-header-links">
         <li><ServicesDropdown /></li>

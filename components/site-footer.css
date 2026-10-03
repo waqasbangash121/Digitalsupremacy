@@ -24,7 +24,7 @@
 .ds-footer .ds-footer-cta-btn:hover { background: #a00e19; border-color: #a00e19; color: #fff; }
 .ds-footer .ds-footer-cols { display: grid; grid-template-columns: 2fr 1.3fr 1fr .9fr .8fr; gap: 35px; padding-block: 40px 32px; }
 .ds-footer .ds-footer-cols > div { min-width: 0; }
-.ds-footer .ds-footer-brand-name { display: inline-block; background: #171719; border-radius: 4px; padding: 8px; }
+.ds-footer .ds-footer-brand-name { display: inline-block; background: transparent; border-radius: 4px; padding: 8px; }
 .ds-footer .ds-footer-brand-name img { display: block; width: 197px; max-width: 100%; height: auto; }
 .ds-footer .ds-footer-brand-desc { max-width: 270px; margin: 14px 0; color: #5f5f68; font-size: 12px; line-height: 1.7; }
 .ds-footer .ds-footer-brand-email { color: #5f5f68; font-size: 11px; overflow-wrap: anywhere; }

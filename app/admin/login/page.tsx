@@ -1,3 +1,5 @@
+import Link from "next/link";
+import BrandLogo from "@/components/brand-logo";
 import { redirect } from "next/navigation";
 import { getCurrentAdmin, hasAdminUsers } from "@/lib/auth";
 import AuthForm from "./auth-form";
@@ -11,9 +13,9 @@ export default async function AdminLoginPage() {
 
   return (
     <main className="admin-auth-page">
-      <a className="admin-auth-brand" href="/">
-        <img src="/image/logo.png" alt="Digital Supremacy" />
-      </a>
+      <Link className="admin-auth-brand" href="/">
+        <BrandLogo width={205} />
+      </Link>
       <section className="admin-auth-card">
         <p className="admin-kicker">Admin</p>
         <h1>{setup ? "Create the first admin" : "Welcome back"}</h1>

@@ -1,0 +1,21 @@
+.rv-video{aspect-ratio:16/9;width:100%;min-width:0;position:relative;border-radius:6px;overflow:hidden;background:linear-gradient(130deg,#171719,#393940);isolation:isolate}
+.rv-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;background:#111}
+.rv-video-cover{position:absolute;inset:0;width:100%;height:100%;display:block;padding:0;border:0;background:transparent;color:white;cursor:pointer;text-align:left}
+.rv-video-cover>img{position:absolute;width:100%;height:100%;object-fit:contain;inset:0;z-index:-2}
+.rv-video-cover:after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 45%,#171719c9);z-index:-1}
+.rv-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:60px;height:60px;background:var(--rv-accent,#c1121f);border:1px solid #ffffff55;border-radius:8px;font-size:25px;padding-left:3px;box-shadow:0 5px 20px #0003}
+.rv-video-cover:hover .rv-play{background:#a00e19}
+.rv-video-tag{position:absolute;top:12px;right:12px;font-size:8px;letter-spacing:.05em;background:#a00e19e6;padding:4px 8px;border-radius:4px}
+.rv-video-caption{position:absolute;bottom:0;left:0;width:100%;padding:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:10px}
+.rv-video-caption>span{font-size:8px}
+.rv-video-caption{font-size:11px}
+.rv-video-controls{position:absolute;inset:auto 0 0;display:flex;align-items:center;gap:8px;padding:8px;background:#171719ed;color:white;z-index:3}
+.rv-video-controls button{min-width:36px;min-height:44px;border:0;border-radius:4px;background:transparent;color:white;cursor:pointer;font:inherit;font-size:12px;flex-shrink:0}
+.rv-video-controls button:hover{background:#ffffff24}
+.rv-video-controls input{min-width:0;flex:1;accent-color:#ef6a73;cursor:pointer;height:44px}
+.rv-video-time{font-size:10px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.rv-video-status{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);padding:8px 12px;background:#171719dd;color:white;border-radius:5px;font-size:12px}
+.rv-video:fullscreen{max-height:none;width:100%;height:100%;border-radius:0;background:#111}
+@media(max-width:360px){.rv-video-controls{gap:3px;padding:5px}.rv-video-time{font-size:9px}}
+.rv-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#111}
+.rv-video-controls button:focus-visible,.rv-video-cover:focus-visible,.rv-video-controls input:focus-visible{outline:2px solid #ff9ba3;outline-offset:-3px}

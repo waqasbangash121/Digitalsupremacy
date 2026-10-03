@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import ReviewVideo from "./review-video";
 import { useEffect, useRef, useState } from "react";
 import { reviews, type Review } from "@/lib/reviews";
 import "./home-reviews.css";
@@ -9,7 +10,6 @@ export default function HomeReviews() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const [activeReview, setActiveReview] = useState<Review | null>(null);
-  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     if (!activeReview) return;
@@ -20,7 +20,6 @@ export default function HomeReviews() {
 
   function openVideo(review: Review, trigger: HTMLButtonElement) {
     triggerRef.current = trigger;
-    setLoaded(false);
     setActiveReview(review);
     dialogRef.current?.showModal();
   }
@@ -60,12 +59,10 @@ export default function HomeReviews() {
         <div><p>Client video review</p><h3 id="hr-dialog-title">{activeReview?.name}</h3><span>{activeReview?.role}</span></div>
         <button className="hr-close" type="button" autoFocus aria-label="Close video review" onClick={() => dialogRef.current?.close()}>✕</button>
       </div>
-      <div className="hr-player" aria-busy={activeReview !== null && !loaded}>
-        {activeReview && <>
-          {!loaded && <span className="hr-loading" role="status">Loading video…</span>}
-          <iframe key={activeReview.video} src={`https://drive.google.com/file/d/${activeReview.video}/preview`} title={`${activeReview.name} video review`} allow="autoplay; fullscreen" allowFullScreen onLoad={() => setLoaded(true)} />
-        </>}
+      <div className="hr-player">
+        {activeReview && <ReviewVideo key={activeReview.video} review={activeReview} autoPlay />}
       </div>
+      {activeReview && <div className="hr-dialog-foot"><a href={`https://drive.google.com/file/d/${activeReview.video}/view`} target="_blank" rel="noreferrer">Watch on Google Drive ↗</a></div>}
     </dialog>
   </>;
 }

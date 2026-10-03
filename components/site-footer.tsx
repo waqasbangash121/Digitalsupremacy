@@ -1,5 +1,5 @@
+import BrandLogo from "@/components/brand-logo";
 import Link from "next/link";
-import Image from "next/image";
 import { getSiteSettings } from "@/lib/site-settings";
 import "./site-footer.css";
 
@@ -27,7 +27,7 @@ export default async function SiteFooter() {
 
         <div className="ds-footer-cols">
           <div>
-            <Link className="ds-footer-brand-name" href="/" aria-label="Digital Supremacy home"><Image src="/image/logo.png" width={210} height={50} alt="Digital Supremacy" /></Link>
+            <Link className="ds-footer-brand-name" href="/" aria-label="Digital Supremacy home"><BrandLogo width={210} /></Link>
             <p className="ds-footer-brand-desc">Retention marketing for DTC ecommerce brands. We build email systems that turn traffic, subscribers, and customers into consistent revenue.</p>
             <div className="ds-footer-brand-email"><Link href="mailto:addy@yourdigitalsupremacy.com">addy@yourdigitalsupremacy.com</Link></div>
           </div>
@@ -49,7 +49,7 @@ export default async function SiteFooter() {
             <ul className="ds-footer-col-links">
               <li><Link href="/why-us">Why Us</Link></li>
               <li><Link href="/case-studies">Case Studies</Link></li>
-              <li><Link href="/templates">Templates</Link></li>
+              <li><Link href="/portfolio">Portfolio</Link></li>
               <li><Link href="/reviews">Reviews</Link></li>
               <li><Link href="/team">Our Team</Link></li>
               <li><Link href="https://calendly.com/addyawan57/15min" target="_blank" rel="noreferrer">Book a Call</Link></li>

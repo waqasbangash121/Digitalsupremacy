@@ -1,3 +1,4 @@
+import BrandLogo from "@/components/brand-logo";
 import SiteFooter from "@/components/site-footer";
 import HomeReviews from "@/components/home-reviews";
 import type { Metadata } from "next";
@@ -221,7 +222,7 @@ export default function Page() {
       <section className="rh-section rh-shell" id="why">
         <div className="rh-partnership-panel">
           <div className="rh-partnership-proof">
-            <Image src="/image/logo.png" width={290} height={68} alt="Digital Supremacy" />
+            <BrandLogo width={290} />
             <div>
               <strong>50<span>+</span>
               </strong>

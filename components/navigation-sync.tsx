@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 const requiredLinks = [
-  { href: "/templates", label: "Templates" },
+  { href: "/portfolio", label: "Portfolio" },
   { href: "/reviews", label: "Reviews" },
 ] as const;
 
@@ -24,8 +24,8 @@ export default function NavigationSync() {
             item.appendChild(link);
 
             const caseStudies = list.querySelector('a[href="/case-studies"]')?.closest("li");
-            const templates = list.querySelector('a[href="/templates"]')?.closest("li");
-            const anchor = href === "/templates" ? caseStudies : templates ?? caseStudies;
+            const portfolio = list.querySelector('a[href="/portfolio"]')?.closest("li");
+            const anchor = href === "/portfolio" ? caseStudies : portfolio ?? caseStudies;
             if (anchor?.nextSibling) list.insertBefore(item, anchor.nextSibling);
             else list.appendChild(item);
           }

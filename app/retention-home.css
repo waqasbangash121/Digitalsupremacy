@@ -329,9 +329,9 @@
   border: 1px solid var(--rh-border);
 }
 .retention-home .services-dropdown-links a:hover { color: #fff; }
-/* The original white wordmark uses a compact dark backing for legibility. */
+/* Keep the black wordmark readable on light surfaces. */
 .rh-logo, .rh-partnership-proof > img, .rh-footer .footer-brand-name img {
-  background: #171719;
+  background: #fff;
   border-radius: 4px;
   padding: 8px;
 }
